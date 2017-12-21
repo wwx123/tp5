@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://t.flowerplus.cn/my/orders/?status=1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="keywords" content="花+,花加,flowerplus,鲜花,鲜花订阅">
+        <meta name="description" content="一周一花，用鲜花点亮生活,提供98元单品鲜花包月服务、168元混合鲜花包月服务和花艺周边配件、花艺课程服务。">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <title>待付款订单</title>
+        <script charset="utf-8" src="./js/myorder/v.js"></script>
+        <script src="./js/myorder/hm.js"></script>
+        <script async="" src="./js/myorder/sensorsdata.min.js"></script>
+
+        <link rel="stylesheet" href="./css/myorder/m_web.css">
+        <script>
+            var _web_base="./".replace(/^https?:/,window.location.protocol);
+            document.domain="flowerplus.cn";
+        </script>
+        <script src="./js/myorder/jquery.js"></script>
+        <script src="./js/myorder/jweixin-1.2.0.js"></script>
+        <script src="./js/myorder/m.js"></script>
+
+    <style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("./images/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("./images/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("./images/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("./images/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style></head>
+  <body ontouchstart="">
+        <div class="page">
+
+
+<div id="noorders" style="position:fixed;top:0;left:0;right:0;bottom:0;text-align:center;padding-top:100px;background:#f0f0f0;display:none">
+	<img src="./images/myorder/iconfont-empty.png" width="64px">
+					<p style="margin-top:30px">您暂时还没有订单，去逛逛吧</p>
+			</div>
+
+<div id="loadingdetail" style="display:none;position:fixed;z-index:10;width:70px;height:35px;line-height:35px;top:50%;left:50%;margin-top:-18px;margin-left:-35px;text-align:center;border-radius:3px;background:rgba(0,0,0,.8);color:#fff">加载中</div>
+
+<div id="orderlist">
+<dl class="order-list" data-id="10930693">
+	<dt>W2017111716422987073156814<strong class="aright"><span class="btn-pay">去付款</span></strong></dt>
+	<dd class="pinfo-wrap">
+		<div class="pinfo-image"><img src="./images/myorder/14968310272005.jpg!sml"></div>
+		<div class="pinfo-content">
+			<div class="pinfo-title">简花-单品鲜花包月套餐</div>
+			<div class="pinfo-sku">订几个月:1个月(4束);送达日期:周一;加购46:INS花瓶;养护必备:保鲜液4包</div>
+		</div>
+		<!-- <div class="pinfo-price">￥{price}</div> -->
+	</dd>
+	<dd><span class="confirm-price">￥100.00</span>
+		<span class="aright">2017-11-17</span>
+	</dd>
+</dl>
+</div>
+<div id="loading" style="position: relative; line-height: 6rem; text-align: center; color: rgb(102, 102, 102); display: none;">加载中...</div>
+<script id="itemTmp" type="text/html">
+<dl class="order-list" data-id="{id}">
+	<dt>{out_id}<strong class="aright">{xu_icon}{status-text}</strong></dt>
+	<dd class="pinfo-wrap">
+		<div class="pinfo-image"><img src="{pic_path}"></div>
+		<div class="pinfo-content">
+			<div class="pinfo-title">{title}</div>
+			<div class="pinfo-sku">{sku_properties_name}</div>
+		</div>
+		<!-- <div class="pinfo-price">￥{price}</div> -->
+	</dd>
+	<dd><span class="confirm-price">￥{payment}</span>
+		<span class="aright">{created}</span>
+	</dd>
+</dl>
+</script>
+<script>
+var next=0,isloading=false,totalheight = 0, status="1", u_from="";
+function getList(isFirstTime){
+	isloading=true;
+	$.get('/my/getorderlist',{next:next,status:status,u_from:u_from},function(v){
+		next=v.next;
+		var itemTmp=$("#itemTmp").html();
+		var ctl=$("#orderlist");
+		if(v.list.length==0 && isFirstTime){
+			$("#noorders").show();
+		}
+		for(var i in v.list){
+			var html=itemTmp;
+			var data=v.list[i];
+			html=html.replace('{id}',data['id']);
+			html=html.replace('{out_id}',data['out_id']);
+			html=html.replace('{created}',formatCreated(data['created']));
+			html=html.replace('{pic_path}',data['pic_path'].replace(/^http:\/\//,'//'));
+			html=html.replace('{title}',data['title']);
+			html=html.replace('{sku_properties_name}',data['sku_properties_name']);
+			//html=html.replace('{price}',data['price']);
+			html=html.replace('{payment}',data['payment']);
+			html=html.replace('{status-text}',getStatusText(data['status']));
+			if(data['is_continue_to_sign']){
+                html=html.replace('{xu_icon}','<img style="width: 24px;margin-right: 10px;" src="http://oss.flowerplus.cn/oss_svg/2017-11-10/15103154154861.svg">');
+            }else {
+			    html=html.replace('{xu_icon}','');
+            }
+			if(status == 1111){
+				
+					html=html.replace('{sku}',data['activity_1111']['sku']);
+					html=html.replace('{productid}',data['activity_1111']['productid']);
+					if(data['activity_1111']['used'] == 1){
+						html=html.replace('{weikuan}','<a style="line-height:35px;background:#096;color:#fff;display:block;margin:10px;border-radius:5px;" href="/my/orderdetail/?id='+data['activity_1111']['newoid']+'">查看尾款订单</a>')
+					}else{
+						html=html.replace('{weikuan}','<a class="buy" productid='+data['activity_1111']['productid']+' sku='+data['activity_1111']['sku']+' style="line-height:35px;background:#f73f65;color:#fff;display:block;margin:10px;border-radius:5px;">付尾款</a>')
+					}
+				
+			}
+			ctl.append(html);
+		}
+		if(next==0){
+			$("#loading").hide();
+		}
+		isloading=false;
+	},"json");
+}
+
+var order_status={};
+order_status["WAIT_PAY"]="待付款";
+order_status["PAY_PROCESSING"]="付款处理中";
+order_status["REFUND_PROCESSING"]="退款处理中";
+order_status["TRADE_CLOSED_BY_USER"]="交易取消";
+order_status["WAIT_VERIFY"]="待审核";
+order_status["IN_SERVICE"]="服务中";
+order_status["PAUSE_SERVICE"]="暂停发货";
+order_status["TRADE_CLOSED"]="交易关闭";
+order_status["TRADE_FINISH"]="交易完成";
+
+function getStatusText(s){
+	if(s=="WAIT_PAY"){
+		return '<span class="btn-pay">去付款</span>';
+	}
+	return order_status[s];
+
+}
+
+function formatCreated(datetime){
+	var d=new Date(datetime.replace(/-/g,'/'));
+	return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+}
+
+function loaddata()
+{ 
+    totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度 
+
+    if ($(document).height() <= totalheight+10)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
+    { 
+        getList(false);               
+    } 
+} 
+
+$(window).scroll( function() { 
+	if(!isloading && next>0){
+    	loaddata();
+	}
+}); 
+
+getList(true);
+
+</script>
+
+<script>
+$("#orderlist").delegate(".order-list","click",function(){
+	//$("#loadingdetail").show();
+	window.location.href="orderdesc.html?id="+$(this).attr("data-id");
+})
+//双十一逻辑
+var sku=[];
+$("#orderlist").delegate(".buy","click",function(){
+	var btn=$(this);
+	var btn_text=btn.html();
+	var sku_id=$(this).attr('sku');
+	var productid = $(this).attr('productid');
+	btn.html('请求中...').addClass('buy-sending');
+
+	var _submit=function(){
+		var inputs=[];
+		inputs.push($("<input>",{name:"sku",value:sku_id}));
+		inputs.push($("<input>",{name:"_t",value:(new Date().getTime())}));
+		setTimeout(function(){
+			is_runing=false;
+		    btn.html(btn_text).removeClass('buy-submit-sending');
+		    FP.setAjaxTimeout(0);
+		},300);
+		$("<form>",{method:"get",action:_web_base+"buy/confirm"}).append(inputs).appendTo("body").css({opacity:0}).submit();
+	}
+	FP.ajaxPost(
+		_web_base+"product/productstatus/",
+		{id:productid},
+		function(v){
+			if(v.f){
+           		_submit();
+	        }else{
+	           	FP.showError(v.data);
+	        }
+        	btn.html(btn_text).removeClass('buy-sending');
+		},
+		function(){
+			_submit();
+		}
+	);
+	return;
+    $.getJSON(_web_base+"product/pstatus?id="+productid+"&callback=?", function(v){
+           if(v.f){
+				var inputs=[];
+				inputs.push($("<input>",{name:"sku",value:sku_id}));
+				inputs.push($("<input>",{name:"_t",value:(new Date().getTime())}));
+				$("<form>",{method:"get",action:_web_base+"buy/confirm"}).append(inputs).submit();
+           }else{
+           		FP.showError(v.data);
+           }
+        	is_runing=false;
+        	btn.html(btn_text).removeClass('buy-sending');
+    });
+});
+</script>
+
+        </div>
+
+<script>
+var page_type = '';
+var sat = 'cb037e036c03aad3';
+var sap = 'default';
+var sau = 'https://flowerplus.cloud.sensorsdata.cn:4006/sa?token='+sat+'&project='+sap;
+(function(para) {
+  var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+  w['sensorsDataAnalytic201505'] = n;
+  w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+  var ifs = ['track','quick','register','registerPage','registerOnce','clearAllRegister','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout','trackLink','clearAllRegister'];
+  for (var i = 0; i < ifs.length; i++) {
+    w[n][ifs[i]] = w[n].call(null, ifs[i]);
+  }
+  if (!w[n]._t) {
+    x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+    x.async = 1;
+    x.src = p;
+    y.parentNode.insertBefore(x, y);
+    w[n].para = para;
+  }
+})({
+  sdk_url: './js/myorder/sensorsdata.min.js?_t=20170807',
+  name: 'sa',
+  web_url: 'https://flowerplus.cloud.sensorsdata.cn/',
+  server_url: sau,
+  heatmap: {
+      isTrackLink: false,
+      //设置成 true 后，我们会自动给 a 标签绑定一个 sa.trackLink() 方法（详见本页 3.3 ），如果是单页面 a 标签不涉及页面跳转或者 a 标签的点击是下载功能，建议不要打开。默认 false 。
+      loadTimeout:  1000,
+      //设置多少毫秒后开始渲染点击图
+      collect_url: function(){
+          // 限制只采集微信端
+          // && location.pathname.match(/^(\/)$|^(\/my\/?)$/g) !== null
+          if (location.hostname === 't.flowerplus.cn' || location.hostname === 'static2.flowerplus.cn') {
+              return true;
+          }
+      }
+      //返回true会采集当前页面的数据，返回false等假值表示不采集当前页面,设置这个函数后，内容为空的话，默认是返回假的。不写这个函数，默认是采集所有页面。
+  }
+  ,
+  // debug_mode:true,
+  debug_mode_upload:true
+});
+  param_data = {};
+  sa.quick('autoTrackWithoutProfile', param_data);
+</script>
+<script type="text/javascript" src="./js/myorder/fpa.channel.js"></script>
+<script>
+var fp_utm_source = getQueryString('utm_source');
+if (fp_utm_source != '' && fp_utm_source != null) {
+    setCookie('fpa_channel_utm_source', fp_utm_source, null, '/', '.flowerplus.cn');
+}
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?deb1341df19187ec5a232b519d62c8a9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script>
+    function exist_ga(){return typeof ga == 'function';}
+    function ga_buy(){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"立即购买",eventLabel:"详情页购买"})}
+    function ga_submit(){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"确认下单",eventLabel:"订单填写页"})}
+    function ga_cancel(){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"取消订单",eventLabel:"订单确认页"})}
+    function ga_pay(id,product_name,payment){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"去支付",eventLabel:"订单确认页"});ga("require","ecommerce");ga("ecommerce:addTransaction",{"id":id,"affiliation":product_name,"revenue":payment,});ga("ecommerce:send")};
+</script>
+</body></html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户列表</title>
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script>
+$(function(){
+    $('.click').click(function(){
+        var ct = $(this).attr('cart-data');
+        location.href = 'withdraw.html?sta='+ct;
+    });
+})
+
+</script>
+</head>
+<body>
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">用户管理</a></li>
+    <li>用户列表</li>
+    </ul>
+    </div>
+    
+    <div class="rightinfo">
+    <form action="users.html">
+    <div class="tools" style="height: 30px;">
+        <input type="text" class="dfinput" name="search" style="border:none;border-bottom:solid 1px #c5c5c5;width:180px;" placeholder="请输入用户名或用户id">
+        <input type="submit" value="搜索" style="width:40px;height:30px;background-color: #fff;cursor:pointer;">
+    </div>
+    </form>
+
+    <table class="imgtable">
+    	<thead>
+    	<tr>
+        <th>编号</th>
+        <th>用户名</th>
+        <th width="50px">头像</th>
+        <th>账户余额</th>
+        <th>注册时间</th>
+        <th>用户等级</th>
+        <th>用户状态</th>
+        <th width="200px">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($data as $v){ ?>
+        <tr>
+        <td>{$v['id']}</td>
+        <td>{$v['username']}</td>
+        <td class="imgtd"><img src="{$v['picture']}" width="50px" height="50px"></td>
+        <td>{$v['money']}</td>
+        <td>{$v['addtime']}</td>
+        <td>{$v['status']}</td>
+        <td>{$v['state']}</td>
+        <td><!-- <a href="useredit.html?id={$v['id']}">详情</a> |  --><a href="address.html?id={$v['id']}">收货地址</a> | <a href="userorder.html?id={$v['id']}">订单</a> | <a href="log.html?id={$v['id']}">账目</a></td>
+        <td></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <div class="pagin">
+        {$page}
+    </div>
+<script type="text/javascript">
+$('.tablelist tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

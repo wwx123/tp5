@@ -1,0 +1,29 @@
+{extend name="header" /}
+{block name='title'}更新页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    <style>
+    a{ cursor: pointer; }
+    </style>
+{/block}
+{block name='place1'}<a href="#">网站管理</a>{/block}
+    
+{block name='content'}
+    <div class="formbody">
+        <div class="formtitle"><span>基本信息</span></div>
+        <form action="{:isset($action)?$action:'insert'}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="db" value="usersay" />
+        {:isset($data)?'<input type="hidden" name="id" value="'.$data['id'].'" />':''}
+        {:isset($data)?'<input type="hidden" name="oldpic" value="'.$data['picture'].'" />':''}
+        <ul class="forminfo">
+            <li><label>示例图片</label><input name="file" maxlength="30" type="file" class="dfinput" /><i>建议图片比例</i></li>
+            <li><label>描述</label><input name="desc" maxlength="30" type="text" class="dfinput" value="{:isset($data)?$data['desc']:''}" /><i>简述不要超过30个字符</i></li>
+            <li id="inputurl"><label>链接地址</label><input name="url" type="text" class="dfinput" value="{:isset($data)?$data['url']:''}" /><i>链接地址请输入完整路径，如：https://www.baidu.com</i></li>
+            <li><label>排序</label><input name="sort" type="number" class="dfinput" value="{:isset($data)?$data['sort']:'0'}" /></li>
+            <li><label>是否启用</label><cite><input name="status" type="radio" value="1" checked="checked" />是&nbsp;&nbsp;&nbsp;&nbsp;<input name="status" type="radio" value="0" />否</cite></li>
+            <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+        </ul>
+        </form>
+    </div>
+{/block}

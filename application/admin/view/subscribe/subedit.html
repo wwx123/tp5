@@ -1,0 +1,70 @@
+{extend name="header" /}
+{block name='title'}订阅详情{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+{/block}
+{block name='style'}
+<style>
+.imgtable{
+    width: 80%;
+    margin: 0 0 20px 50px;
+}
+.imgtable th,.imgtable tr{
+    width: 25%;
+    border: solid 1px #c5c5c5;
+}
+</style>
+{/block}
+{block name='place1'}<a href="#">订单管理</a>{/block}
+{block name='place2'}<a href="#">订阅详情</a>{/block}
+
+{block name='content'}
+    <div class="rightinfo">
+    <div class="tools" style="height: 10px"></div>
+    <table class="imgtable">
+        <tr>
+            <th>下单人</th>
+            <td>{$data['username']}</td>
+            <th>订单编号</th>
+            <td>{$data['id']}</td>
+        </tr>
+        <tr>
+            <th>下单时间</th>
+            <td>{$data['addtime']}</td>
+            <th>订单状态</th>
+            <td>{$data['state']}</td>
+        </tr>
+        <tr>
+            <th>支付时间</th>
+            <td colspan="3">{$data['paytime']}</td>
+        </tr>
+    </table>
+    <table class="imgtable">
+        <tr>
+            <th>课程名称</th>
+            <td>{$data['classname']}</td>
+            <th>课程编号</th>
+            <td>{$data['classid']}</td>
+        </tr>
+        <tr>
+            <th>实际支付</th>
+            <td>{$data['money']}</td>
+            <th>商品总价</th>
+            <td>{$data['original']}</td>
+        </tr>
+        <tr>
+            <th>是否使用优惠券</th>
+            <td>{$data['is_coupon']}</td>
+            <th>返利方式</th>
+            <td>{$data['is_rebate']}</td>
+        </tr>
+    </table>
+    <table class="imgtable">
+        <tr>
+            <th>描述</th>
+            <td>{$data['describe']}</td>
+        </tr>
+    </table>
+    </div>
+{/block}

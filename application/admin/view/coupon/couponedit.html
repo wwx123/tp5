@@ -1,0 +1,40 @@
+{extend name="header" /}
+{block name='title'}优惠券列表页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+{/block}
+{block name='place1'}<a href="#">会员管理</a>{/block}
+{block name='place2'}优惠券修改{/block}
+    
+{block name='content'}
+    <div class="formbody">
+        <div class="formtitle"><span>基本信息</span></div>
+        <form action="update" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="db" value="coupon">
+        <input type="hidden" name="id" value="{$data['id']}">
+        <ul class="forminfo">
+            <li><label>优惠券名称</label><input name="title" type="text" class="dfinput" maxlength="30" value="{$data['title']}" /><i>标题不能超过30个字符</i></li>
+            <li><label>优惠类型</label>
+                <select name="state" id="" class="dfinput">
+                    <option value="1">满减/抵用券</option>
+                    <option value="0" {:$data['state']==0?'selected':''}>折扣</option>
+                </select></li>
+            <li><label>优惠力度</label><input name="money" type="number" class="dfinput" maxlength="30" value="{$data['money']}" step="0.01" /><i>满减为正数，折扣范围0-100</i></li>
+            <li><label>满减限制</label><input name="min_money" type="number" class="dfinput" maxlength="30" value="{$data['min_money']}" step="0.01"/><i>0则不限制</i></li>
+            <li><label>个数</label><input name="number" type="text" class="dfinput" maxlength="30" value="{$data['number']}" /><i>-1则无限量供应</i></li>
+            <li><label>已发放</label><input type="text" class="dfinput" value="{$data['grant_num']}" readonly /><i>不可修改</i></li>
+            <li><label>已使用</label><input type="text" class="dfinput" value="{$data['use_num']}" readonly /><i>不可修改</i></li>
+            <li><label>开始时间</label><input name="starttime" type="date" class="dfinput" maxlength="30" value="{:$data['starttime']>0?date('Y-m-d',$data['starttime']):''}" /><i>为空则不限制</i></li>
+            <li><label>截至时间</label><input name="endtime" type="date" class="dfinput" maxlength="30" value="{$data['endtime']>0?date('Y-m-d',$data['starttime']):''}" /><i>为空则不限制</i></li>
+            <li><label>描述</label><input name="descri" type="text" class="dfinput" value="{$data['descri']}"/></li>
+            <li><label>状态</label>
+                <select name="status" id="" class="dfinput">
+                    <option value="1">正常</option>
+                    <option value="0" {:$data['status']==0?'selected':''}>已过期</option>
+                </select>
+            </li>
+            <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+        </ul>
+        </form>
+    </div>
+{/block}

@@ -1,0 +1,83 @@
+{extend name="header" /}
+{block name='title'}申请{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+<script>
+$(function(){
+    $('.click').click(function(){
+        var ct = $(this).attr('cart-data');
+        location.href = 'apply.html?sta='+ct;
+    });
+})
+</script>
+{/block}
+
+{block name='place1'}<a href="#">消息管理</a>{/block}
+{block name='place2'}<a href="#">提现申请</a>{/block}
+
+{block name='content'}
+    <div class="rightinfo">
+    
+    <div class="tools">
+    
+        <ul class="toolbar">
+        <li class="click" cart-data="0"><span><img src="/images/t04.png" /></span>待购买</li>
+        <li class="click" cart-data="1"><span><img src="/images/t04.png" /></span>待审核</li>
+        <li class="click" cart-data="2"><span><img src="/images/t04.png" /></span>已审核</li>
+        </ul>
+        
+    </div>
+    
+    <table class="tablelist">
+        <thead>
+        <tr>
+        <th>编号</th>
+        <th>联系人</th>
+        <th>联系人ID</th>
+        <th>申请类型</th>
+        <th>添加时间</th>
+        <th>操作时间</th>
+        <th>状态</th>
+        <th width="150px">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($data as $v){ ?>
+        <tr>
+        <td>{$v['id']}</td>
+        <td>{$v['username']}</td>
+        <td>{$v['usersid']}</td>
+        <td>{$v['type']}</td>
+        <td>{$v['addtime']}</td>
+        <td>{$v['updatetime']}</td>
+        <td s-data="{$v['id']}">{$v['state2']}</td>
+        <td>{:$v['state']==1?'<a class="tablelink tx" cart-data="'.$v['id'].'"> 通过</a>':'————'}</td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <div class="pagin">
+        {$page}
+    </div>
+{/block}
+{block name='js'}
+<script type="text/javascript">
+$('.tablelist tbody tr:odd').addClass('odd');
+$('.tx').click(function(){
+    id = $(this).attr('cart-data');
+    var that = $(this);
+    if (confirm('确认要通过审核吗？')) {
+        $.post('checks',{id:id,s:2,db:'apply'},function(res){
+            if (res == 0) {
+                alert('操作失败，请联系管理员');
+            } else {
+                that.text('————');
+                $('td[s-data='+id+']').text('已通过');
+                alert('操作成功');
+            }
+        });
+    }
+})
+</script>
+{/block}

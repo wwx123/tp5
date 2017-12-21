@@ -1,0 +1,38 @@
+{extend name="header" /}
+{block name='title'}分类详情页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+{/block}
+{block name='place1'}<a href="#">文章管理</a>{/block}
+{block name='place2'}分类详情{/block}
+    
+{block name='content'}
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+    <form action="update" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="db" value="news_type">
+    <input type="hidden" name="id" value="{$data['id']}">
+    <input type="hidden" name="oldpic" value="{$data['picture']}">
+    <ul class="forminfo">
+        <li><label>分类名称</label><input name="typename" type="text" class="dfinput" maxlength="30" value="{$data['typename']}" /><i>标题不能超过30个字符</i></li>
+        <li><label>图片</label><input name="file" type="file" class="dfinput" /><i>建议图片比例</i></li>
+        <li><label>分类所属</label>
+            <select name="parth" id="" class="dfinput">
+                <?php
+                if ($data['parth']>0) {
+                foreach($parth as $v){
+                    echo '<option value="'.$v['id'].'">'.$v['typename'].'</option>';
+                }
+                } else {
+                    echo '<option value="0">顶级</option>';
+                }
+                ?>
+            </select>
+        </li>
+        <li><label>排序</label><input name="sort" type="number" class="dfinput" value="{$data['sort']}" /></li>
+        <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+    </ul>
+    </form>
+    </div>
+{/block}

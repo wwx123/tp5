@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <title>JRclassroom</title>
+        <link rel="stylesheet" href="./css/self/m_web.css">
+        <script charset="utf-8" src="./js/self/v.js"></script>
+        <script src="./js/self/hm.js"></script>
+        <script async="" src="./js/self/sensorsdata.min.js"></script><script>
+            var _web_base="./".replace(/^https?:/,window.location.protocol);
+            document.domain="flowerplus.cn";
+        </script>
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/self/jweixin-1.2.0.js"></script>
+        <script src="./js/self/m.js"></script>
+
+<link rel="stylesheet" href="./css/self/my.css">
+<link rel="stylesheet" href="./css/self/bindTell.css">
+<script type="text/javascript" src="./js/self/bindPhone.js"></script>
+
+<style type="text/css">
+.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("./images/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("./images/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("./images/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("./images/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% { background-position: -5000px; }
+}
+</style></head>
+  <body ontouchstart="">
+        <div class="page">
+
+<div class="my-banner">
+    <a href="" class="banner-link-panel">
+        <div class="top-avatar" style="background:url('./images/head.jpg') no-repeat center; background-size:cover;"></div>
+        <div class="userInfo">
+            <div class="userName">
+                <span>手机用户</span>
+                <!--  -->
+            </div> 
+            <div class="subTips">余额：100.00</div>
+                <!--<p class="telphone" style="display:none">13166758340</p>-->
+        </div>
+    </a>
+    <!--  -->
+</div>
+
+<div class="orders-panel">
+    <a href="myorder.html" class="orderRow">
+        <p class="my-order my-order-ar borderBottom">
+            全部订单
+            <span class="p_span" style="top:15px;"></span>
+        </p>
+    </a>
+    <div class="orders-status-b">
+        <a href="myorder.html">
+            <u>
+              <img src="./images/self/dai.svg" alt="">
+            </u>
+            <p>待付款</p>
+        </a>
+        <a href="myorder.html">
+            <u>    
+              <img src="./images/self/Group 3.svg" alt="">
+            </u>
+            <p>服务中</p>
+        </a>
+        <a style="border:0 none" href="myorder.html">
+            <u>
+                <!-- <span>0</span> -->
+                <img src="./images/self/Group 2.svg" alt="">
+            </u>
+            <p>已完成</p>
+        </a>
+        <a href="myorder.html">
+            <u>    
+              <img src="./images/self/Combined Shape.svg" alt="">
+            </u>
+            <p>待评价</p>
+        </a>
+        <a class="serviceItem" href="myorder.html">
+            <u>    
+                <img src="./images/self/contact.svg" alt="">
+            </u>
+            <p>售后服务</p>
+        </a>
+    </div>
+</div>
+<div class="orders-panel" style="padding-bottom: 0;">
+    <a href="myclass.html" class="orderRow">
+        <p class="my-order my-order-ar borderBottom">
+            预定课程
+            <span class="p_span" style="top:15px;"></span>
+        </p>
+    </a>
+</div>
+<div class="orders-panel padBt8">
+    <p class="my-order borderBottom">发现</p>
+    <div class="clear" style="overflow:hidden">
+    <!-- <a href="http://mp.weixin.qq.com/s/fTb3ZWHKVmHKKG4KNqtnxA" class="active-item">
+        <div class="icon" style="background-image: url('//static2.flowerplus.cn/Static/img/my/my_fangao.svg')"></div>
+        <p>遇见梵高</p>
+        重温大师经典
+    </a> -->
+    <!-- <a href="http://static2.flowerplus.cn/activity_group?id=20198&s=ucenter" class="active-item">
+        <div class="icon" style="background-image: url('//static2.flowerplus.cn/Static/img/my/my_qjf.svg')"></div>
+        <p>全家福</p>
+        限时限量优惠
+    </a> -->
+  <!--   <a href="http://static2.flowerplus.cn/marketing/allproducts_20170706?s=ucenter" class="active-item tg">
+        <div class="icon" style="background-image: url('//static2.flowerplus.cn/Static/img/my/my_tuan.svg')"></div>
+        <p>清凉团</p>
+        最高直降￥50
+    </a> -->
+    <!-- <a href="http://static2.flowerplus.cn/activity/doubleone_two?s=ucenter" class="active-item">
+        <div class="icon" style="background-image: url('//static2.flowerplus.cn/Static/img/my/my_1111.svg')"></div>
+        <p>主会场</p>
+        低至4.8折
+    </a>
+    <a href="http://t.flowerplus.cn/my/activity_magic_quan"  class="active-item">
+        <div class="icon" style="background-image: url('http://oss.flowerplus.cn/oss_svg/2017-11-07/15100454999568.svg')"></div>
+        <p>魔法道具</p>
+        百变玩法放肆high
+    </a> -->
+    <a href="invitexode.html" class="active-item">
+        <div class="icon" style="background-image: url('./images/self/my_yxsj.svg')"></div>
+        <p>邀请码</p>
+        
+    </a>
+    <a href="myinvite.html" class="active-item">
+        <div class="icon" style="background-image: url('./images/self/my_yxsj.svg')"></div>
+        <p>我的邀请</p>
+        分享
+    </a>
+    <a href="myearn.html" class="active-item">
+        <div class="icon" style="background-image: url('./images/self/icon_upgrade.svg')"></div>
+        <p>推广盈利</p>
+        赚奶粉钱
+    </a>  
+   <!--  <a href="http://mp.weixin.qq.com/s/_0XqaQ2QIShp90tygLRoxg" class="active-item">
+        <div class="icon" style="background-image: url('./images/self/fl_course.svg')"></div>
+        <p>花艺课</p>
+        名师授课
+    </a>  -->
+    </div>
+    <!-- <div class="clear" style="padding-top:18px"></div> -->
+</div>
+<div class="orders-panel orders-panel2">
+    <p class="my-order borderBottom">我的服务</p>
+    <div class="serviceBox first clear">
+        <a href="mycard.html" class="item xhkdh">
+            <div class="iconImg"></div>
+            我的会员卡
+        </a>
+        <a href="mycoupons.html" class="item yhq">
+            <div class="iconImg"></div>
+            我的优惠券
+        </a>
+        <a href="mycart.html" class="item jf">
+            <div class="iconImg"></div>
+            我的购物车
+        </a>
+        <a href="cash.html" class="item hb">
+            <div class="iconImg"></div>
+            我要提现
+        </a>
+        <a href="cooperation.html" class="item tcjy">
+            <div class="iconImg"></div>
+            我要合作
+        </a>
+        <a href="search.html" class="item cx">
+            <div class="iconImg"></div>
+            第三方查询
+        </a>
+        <!-- <a href="questions.html" class="item help">
+            <div class="iconImg"></div>
+            帮助中心
+        </a> -->
+        <div class="flagLine"></div>
+    </div>
+</div>
+<!-- 绑定手机号码弹框-->
+<div class="poupVerifyBox hide">
+    <div class="bgMask"></div>
+    <div class="firstStep">
+        <div class="phoneNum">
+            <p>为了保证您的账户安全，请绑定您的个人手机号码</p>
+            <div class="phoneBox">
+                <img class="iconPhone" src="./images/self/icon_phone.svg">
+                <input type="tel" class="tel_input row-h40" id="uclogin_mobile" maxlength="11">
+            </div>
+        </div>
+        <!-- <button class="confirmBind" id="confirmBind">确认绑定</button> -->
+        <button class="confirmBind" id="SendCode" disabled="">下一步</button>
+    </div>
+    
+    <div class="secStep hide">
+        <div class="writeCode">
+            <div class="goBack"></div>
+            <p class="secTitle">输入验证码</p>
+            <p class="secP">验证码发送至&nbsp;<span id="phoneHolder"></span></p>
+            <button class="send_agin" id="sendAgin">重新发送短信验证码</button>
+            <div class="inputBox">
+                <div class="number border1px borderRadiu2px"></div>
+                <div class="number border1px borderRadiu2px"></div>
+                <div class="number border1px borderRadiu2spx"></div>
+                <div class="number border1px borderRadiu2px"></div>
+                <input type="tel" id="hiddenInput">
+            </div>
+            <button id="chooseVoice" class="choose_voice" disabled="">收不到短信?获取语音验证码</button>
+        </div>
+        <button class="confirmBind disabled" id="submit">确认绑定</button>
+    </div>
+
+    <div class="lastStep hide">
+        <img class="closeImg" src="./images/self/icon_close.svg">
+        <p class="secTitle">绑定成功！</p>
+        <img class="sucImg" src="./images/self/icon_success.svg">
+        <p class="secP">当前绑定的手机号</p>
+        <p id="hasBindPhonetel">12345678908</p>
+    </div>
+</div>
+
+<!-- 夏日保鲜计划弹窗-->
+<div class="freshPlay-pouopBox">
+    <div class="poupBg abs">
+        <div class="closeBtn abs"></div>
+        <span style="position: absolute;right: 0px;bottom: -25px;color:#ffffff;opacity:0.5;font-size: 12px;">在法律允许的范围内拥有最终解释权</span>
+    </div>
+</div>
+<!-- 尾部-->
+<div class="foot">
+  <div class="link">
+    <a href="index.html">首页</a>•
+    <a href="self.html">会员中心</a>•
+    <a href="questions.html">常见问题</a>
+  </div>
+  <p><a href="index.html"><img src="./images/self/logo_open.png" alt=""></a></p>
+</div>
+
+        </div>
+
+<script>
+var page_type = '';
+var sat = 'cb037e036c03aad3';
+var sap = 'default';
+var sau = 'https://flowerplus.cloud.sensorsdata.cn:4006/sa?token='+sat+'&project='+sap;
+(function(para) {
+  var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+  w['sensorsDataAnalytic201505'] = n;
+  w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+  var ifs = ['track','quick','register','registerPage','registerOnce','clearAllRegister','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout','trackLink','clearAllRegister'];
+  for (var i = 0; i < ifs.length; i++) {
+    w[n][ifs[i]] = w[n].call(null, ifs[i]);
+  }
+  if (!w[n]._t) {
+    x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+    x.async = 1;
+    x.src = p;
+    y.parentNode.insertBefore(x, y);
+    w[n].para = para;
+  }
+})({
+  sdk_url: './js/self/sensorsdata.min.js?_t=20170807',
+  name: 'sa',
+  web_url: './',
+  server_url: sau,
+  heatmap: {
+      isTrackLink: false,
+      //设置成 true 后，我们会自动给 a 标签绑定一个 sa.trackLink() 方法（详见本页 3.3 ），如果是单页面 a 标签不涉及页面跳转或者 a 标签的点击是下载功能，建议不要打开。默认 false 。
+      loadTimeout:  1000,
+      //设置多少毫秒后开始渲染点击图
+      collect_url: function(){
+          // 限制只采集微信端
+          // && location.pathname.match(/^(\/)$|^(\/my\/?)$/g) !== null
+          if (location.hostname === 't.flowerplus.cn' || location.hostname === 'static2.flowerplus.cn') {
+              return true;
+          }
+      }
+      //返回true会采集当前页面的数据，返回false等假值表示不采集当前页面,设置这个函数后，内容为空的话，默认是返回假的。不写这个函数，默认是采集所有页面。
+  }
+  ,
+  // debug_mode:true,
+  debug_mode_upload:true
+});
+
+  param_data = {};
+
+  sa.quick('autoTrackWithoutProfile', param_data);
+</script>
+
+<script type="text/javascript" src="./js/self/fpa.channel.js"></script>
+<script>
+var fp_utm_source = getQueryString('utm_source');
+if (fp_utm_source != '' && fp_utm_source != null) {
+    setCookie('fpa_channel_utm_source', fp_utm_source, null, '/', '.flowerplus.cn');
+}
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?deb1341df19187ec5a232b519d62c8a9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!--暂停google统计-->
+<!-- 
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+              ga('create', 'UA-93082500-1', 'auto');
+              ga('send', 'pageview');
+</script>
+-->
+<script>
+    function exist_ga(){return typeof ga == 'function';}
+    function ga_buy(){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"立即购买",eventLabel:"详情页购买"})}
+    function ga_submit(){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"确认下单",eventLabel:"订单填写页"})}
+    function ga_cancel(){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"取消订单",eventLabel:"订单确认页"})}
+    function ga_pay(id,product_name,payment){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"去支付",eventLabel:"订单确认页"});ga("require","ecommerce");ga("ecommerce:addTransaction",{"id":id,"affiliation":product_name,"revenue":payment,});ga("ecommerce:send")};
+</script>
+
+<script type="text/javascript">
+    function contact_customer() {
+        $.post('/wx_cs/get_contact_customer',{},function(d) {
+          if (d.f == true) {
+            WeixinJSBridge.call('closeWindow');
+          }else{
+            alert(d.data);
+          }
+        },'json')
+    }
+    var poupBg;
+
+    function showFresh(){
+        localStorage.setItem("__freshPlayshow__","ok");
+        $('.freshPlay-pouopBox').addClass('g-poupBox-show');
+        if(!poupBg){
+            poupBg = $('.freshPlay-pouopBox .poupBg');
+            poupBg.css('height',poupBg.width() * 1.46);
+        } 
+        FP.ajaxPost('/my/freshclicklog');
+    }
+    $('#freshPlay').click(function(e){
+        e.stopPropagation();
+        showFresh();
+    })
+    $('.freshPlay-pouopBox .closeBtn').click(function(e){
+        e.stopPropagation();
+        $('.freshPlay-pouopBox').removeClass('g-poupBox-show');
+    })
+    $(function(){
+        if($("#freshPlay").length != 1 || typeof localStorage != 'object' || localStorage.getItem("__freshPlayshow__") == "ok"){
+            return;
+        }
+        showFresh();
+    });
+</script>
+
+</body></html>

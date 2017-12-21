@@ -1,0 +1,85 @@
+.tips {
+	position:fixed;
+	top:40%;
+	/*width:100%;
+	*/
+	left:50%;
+	text-align:center;
+	display:none;
+	z-index:100;
+	-webkit-transform:translateX(-50%);
+	transform:translateX(-50%);
+}
+.tips div {
+	display:inline-block;
+	margin:0 10px;
+	padding:5px 10px;
+	text-align:center;
+	color:#fff;
+	font-size:14px;
+	text-shadow:1px 1px 1px #000;
+	border-radius:15px;
+	line-height:1.5em;
+	background:rgba(0,0,0,.8);
+}
+.right-dialog {
+	position:fixed;
+	width:100%;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	background:#fff;
+	-webkit-transform:translate3d(100%,0,0);
+	transform:translateed(100%,0,0);
+	-webkit-transition:all .3s ease-out .1s;
+	transition:all .3s ease-out .1s;
+	overflow:auto;
+	-webkit-overflow-scrolling:touch;
+	-webkit-backface-visibility:hidden;
+}
+.right-dialog h2 {
+	padding:15px 0;
+	text-align:center;
+	font-size:18px;
+	font-weight:normal;
+	border-bottom:1px solid #e5e5e5;
+}
+.right-dialog-show {
+	-webkit-transform:translate3d(0,0,0);
+	transform:translate3d(0,0,0);
+}
+.right-dialog-close {
+	height:32px;
+	width:32px;
+	position:absolute;
+	right:15px;
+	top:12px;
+	background:url("/Static/img/iconfont-close-tiny.png") no-repeat center;
+	background-size:cover;
+}
+.btn-sml {
+	border:0 none;
+	background-color:#f73f65;
+	color:#fff;
+	padding:10px 25px;
+	border-radius:4px;
+}
+.quanitem {
+	padding:15px 15px;
+	border-bottom:1px solid #e5e5e5;
+	background:url("/Static/img/iconfont-checkbox-default.png") 95% center no-repeat;
+	background-size:14px;
+	-webkit-transition:.2s ease-out;
+}
+.quanitem:active {
+	background-color:#eee;
+}
+.quanitem.checked {
+	background-image:url("/Static/img/iconfont-checkbox-checked.png");
+	color:#f73f65;
+}
+.quanitem p {
+	font-size:12px;
+	color:#999;
+}

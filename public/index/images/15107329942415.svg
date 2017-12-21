@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-仅限新用户</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="订单流程" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="选择属性-老用户" transform="translate(-16.000000, -535.000000)">
+            <g id="商品-copy-3" transform="translate(16.000000, 496.000000)">
+                <g id="item-赠送" transform="translate(0.000000, 39.000000)">
+                    <g id="icon-仅限新用户" transform="translate(-5.000000, -4.000000)">
+                        <polygon id="Rectangle-10-Copy" fill="#FF6672" points="5 4 45 4 5 44"></polygon>
+                        <text id="仅限-新用户" transform="translate(16.769476, 16.338077) rotate(-45.000000) translate(-16.769476, -16.338077) " font-family="PingFangSC-Regular, PingFang SC" font-size="9" font-weight="normal" line-spacing="9" fill="#FFFFFF">
+                            <tspan x="7.76947608" y="17.3380772">仅限</tspan>
+                            <tspan x="3.26947608" y="26.3380772">新用户</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

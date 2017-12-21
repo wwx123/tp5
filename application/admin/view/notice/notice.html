@@ -1,0 +1,88 @@
+{extend name="header" /}
+{block name='title'}公告页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".click").click(function(){
+            $(".tip").fadeIn(200);
+        });
+        $(".tiptop a").click(function(){
+          $(".tip").fadeOut(200);
+        });
+        $(".cancel").click(function(){
+          $(".tip").fadeOut(100);
+        });
+    });
+    </script>
+{/block}
+{block name='style'}
+<style>
+.dfinput{ width: 90%; margin-bottom: 10px; }
+a{ cursor: pointer; }
+</style>
+{/block}
+{block name='place1'}<a href="#">其它</a>{/block}
+{block name='place2'}公告{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    
+    <div class="tools">
+    
+        <ul class="toolbar">
+        <li class="click"><span><img src="/images/t01.png" /></span>添加</li>
+        </ul>
+        
+    </div>
+    
+    <table class="tablelist">
+        <thead>
+        <tr>
+        <th>编号</th>
+        <th>公告内容</th>
+        <th>排序</th>
+        <th width="150px">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($data as $v){ ?>
+        <tr>
+        <td>{$v['id']}</td>
+        <td>{$v['title']}</td>
+        <td>{$v['sort']}</td>
+        <td><a onclick="if(confirm('数据删除后无法恢复，确认要删除吗？')){ location.href='del.html?db=notice&id={$v['id']}' }" class="tablelink"> 删除</a></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+
+    <form action="insert" method="post">
+    <input type="hidden" name="db" value="notice" />
+    <div class="tip">
+      <div class="tiptop"><span>提示信息</span><a></a></div>
+        
+      <div class="tipinfo">
+        <span><img src="/images/ticon.png" /></span>
+        <div class="tipright">
+        <!-- <p>是否确认对信息的修改 ？</p>
+        <cite>如果是请点击确定按钮 ，否则请点取消。</cite> -->
+        <input type="text" class="dfinput" name="title" placeholder="公告内容" />
+        <input type="number" class="dfinput" value="0" name="sort" />
+        </div>
+        </div>
+        <div class="tipbtn">
+        <input name="" type="submit"  class="sure" value="确定" />&nbsp;
+        <input name="" type="button"  class="cancel" value="取消" />
+        </div>
+      </div>
+    </div>
+    </form>
+{/block}
+
+{block name='js'}
+<script type="text/javascript">
+$('.tablelist tbody tr:odd').addClass('odd');
+</script>
+{/block}

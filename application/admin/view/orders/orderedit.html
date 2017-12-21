@@ -1,0 +1,92 @@
+{extend name="header" /}
+{block name='title'}订单详情{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+{/block}
+{block name='style'}
+<style>
+.imgtable{
+    width: 80%;
+    margin: 0 0 20px 50px;
+}
+.imgtable th,.imgtable tr{
+    width: 25%;
+    border: solid 1px #c5c5c5;
+}
+</style>
+{/block}
+{block name='place1'}<a href="#">订单管理</a>{/block}
+{block name='place2'}订单详情{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    <div class="tools" style="height: 10px"></div>
+    <table class="imgtable">
+        <tr>
+            <th>下单人</th>
+            <td>{$data['username']|default='未知'}</td>
+            <th>订单编号</th>
+            <td>{$data['id']}</td>
+        </tr>
+        <tr>
+            <th>下单时间</th>
+            <td>{$data['addtime']}</td>
+            <th>订单状态</th>
+            <td>{$data['state2']}</td>
+        </tr>
+    </table>
+    <table class="imgtable">
+        <tr>
+            <th>快递单号</th>
+            <td colspan="3">{$data['id']}</td>
+        </tr>
+        <tr>
+            <th>收货人</th>
+            <td>{$data['consignee']}</td>
+            <th>联系电话</th>
+            <td>{$data['tel']}</td>
+        </tr>
+        <tr>
+            <th>收货地址</th>
+            <td colspan="3">{$data['city']} {$data['address']}（{$data['icon']}）</td>
+        </tr>
+        <tr>
+            <th>快递类型</th>
+            <td>{$data['shipping']}</td>
+            <th>发货时间</th>
+            <td>{$data['sendtime']}</td>
+        </tr>
+    </table>
+    <table class="imgtable">
+        <tr>
+            <th>商品名称</th>
+            <td>{$data['goods']|default='未知商品'}</td>
+            <th>商品编号</th>
+            <td>{$data['goodsid']}</td>
+        </tr>
+        <tr>
+            <th>购买数量</th>
+            <td>{$data['num']}</td>
+            <th>商品总价</th>
+            <td>{$data['original']}</td>
+        </tr>
+        <tr>
+            <th>实际支付</th>
+            <td colspan="3">{$data['money']}</td>
+        </tr>
+        <tr>
+            <th>是否使用优惠券</th>
+            <td>{$data['is_coupon']}</td>
+            <th>返利方式</th>
+            <td>{$data['is_rebate']}</td>
+        </tr>
+    </table>
+    <table class="imgtable">
+        <tr>
+            <th>描述</th>
+            <td>{$data['describe']}</td>
+        </tr>
+    </table>
+    </div>
+{/block}

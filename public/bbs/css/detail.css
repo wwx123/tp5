@@ -1,0 +1,161 @@
+body{
+    padding-bottom: 2.8rem;
+}
+.main{
+    top: 0;
+    bottom:2.4rem;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-y:auto;
+    z-index:100; 
+
+}
+.essence_flag{
+    background: url('../images/essence_flag.png') center no-repeat;
+    background-size: cover;
+    width: 4.5rem;
+    height: 2rem;
+    right: 4.5rem;
+    top: 0;
+}
+.topicDetail{
+    padding: 1rem 0.8rem;
+}
+.attentionBtn{
+    width: 3.1rem;
+    height: 1.3rem;
+}
+.headImg {
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.authorInfo{
+    padding-left: 0.4rem;
+}
+.topicCont{
+    padding: 0.8rem 0;
+}
+.topicImgBox{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.bottomSupport{
+    padding-top: 0.8rem;
+}
+.supportRow{
+    width: 13rem;
+}
+.supportRow .headImg{
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.1rem;
+}
+.icon_support{
+    width: 1rem;
+    height: 1.1rem;
+    background-position: -8.73rem 0;
+    margin-right: 0.3rem;
+}
+.support.checked{
+    color:#F5A623;
+}
+.support.checked .icon_support{
+    background-position: -9.75rem 0;
+}
+.commitPanel{
+    margin: 0.5rem 0;
+}
+.commitPanel .tilte{
+    padding: 0.83rem 0;
+}
+.commitList{
+    padding: 0.8rem 0 0.5rem;
+    border-bottom: solid 0.05rem #E7E7E7;
+}
+.commitList:nth-child(2){
+    padding-top: 0;
+}
+.commitList:last-child{
+    border: none;
+}
+.commitList .flex{
+    justify-content: flex-start;
+}
+.commitList .userInfo{
+    width: 14.8rem;
+    padding-left: 0.5rem;
+}
+.commitList .support{
+    right: 0;
+    /*top: 0.8rem;*/
+}
+.commitList .pub_cont{
+    padding: 0.6rem 0;
+}
+.commitList .review{
+    color: #848484;
+}
+.reviewBox{
+    background: #f9f9f9;
+    padding: 0.3rem 0;
+    margin-bottom: 0.5rem;
+}
+.reviewBox .line{
+    color: #343434;
+    line-height: 0.8rem;
+    padding: 0.2rem 0.7rem;
+}
+.reviewBox .line .userName{
+    color: #FB465A;
+}
+#collectBtn,#publishBtn{
+    width: 1rem;
+    height: 1rem;
+    padding: 0 0.3rem;
+    background: url('../images/collect_1.png') no-repeat center;
+    background-size: 0.95rem 0.95rem;
+}
+#collectBtn.checked{
+    background: url('../images/collect_2.png') no-repeat center;
+    background-size: 0.95rem 0.95rem;
+}
+#publishBtn{
+    margin-left: 0.5rem;
+    background: url('../images/share.png') no-repeat center;
+    background-size: 1rem 1rem;
+}
+.publishFixed{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.4rem;
+    border-top: solid 0.05rem #f2f2f2;
+    align-items: center;
+    padding: 0.4rem 0.6rem 0.4rem 0.8rem;
+    z-index: 10;
+}
+.publishFixed input{
+    width: 12.8rem;
+    height: 1.6rem;
+    border-radius: 0.2rem;
+    border: solid 0.05rem #e5e5e5;
+    padding-left: 0.4rem;
+}
+.viewMoreBtn{
+    padding: 0 0.7rem;
+    line-height: 1.3rem;
+}
+.viewMoreBtn .icon{
+    width: 0.6rem;
+    height: 0.6rem;
+    background: url('../images/icon_more.png') no-repeat center;
+    background-size: 0.6rem 0.6rem;
+    margin-left:0.25rem;
+}
+.viewMoreBtn .icon.up{
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}

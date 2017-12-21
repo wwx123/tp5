@@ -1,0 +1,94 @@
+{extend name="header" /}
+{block name='title'}公告页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    <script>
+    $(function(){
+        $('.click').click(function(){
+            var ct = $(this).attr('cart-data');
+            location.href = 'distrilog.html?sta='+ct;
+        });
+        $(".tj").click(function(){
+          $(".tip").fadeIn(200);
+        });
+        $(".tiptop a").click(function(){
+          $(".tip").fadeOut(200);
+        });
+        $(".sure").click(function(){
+          $(".tip").fadeOut(100);
+        });
+        $(".cancel").click(function(){
+          $(".tip").fadeOut(100);
+        });
+    })
+    </script>
+{/block}
+{block name='place1'}<a href="#">统计</a>{/block}
+{block name='place2'}返利日志{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    
+    <div class="tools">
+    
+        <ul class="toolbar">
+        <li class="click" cart-data="1"><span><img src="/images/t04.png" /></span>一级返利</li>
+        <li class="click" cart-data="2"><span><img src="/images/t04.png" /></span>二级返利</li>
+        <li class="tj" cart-data="2"><span><img src="/images/t04.png" /></span>统计</li>
+        </ul>
+        
+    </div>
+    
+    <table class="tablelist">
+        <thead>
+        <tr>
+        <th>编号</th>
+        <th>消费人</th>
+        <th>获利人</th>
+        <th>消费金额</th>
+        <th>返利金额</th>
+        <th>添加时间</th>
+        <th>类别</th>
+        <th>购买类别</th>
+        <th width="150px">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($data as $v){ ?>
+        <tr>
+        <td>{$v['id']}</td>
+        <td>{$v['payname']}（ID: {$v['payuser']}）</td>
+        <td>{$v['username']}（ID: {$v['usersid']}）</td>
+        <td>{$v['orderid']}</td>
+        <td>{$v['money']}</td>
+        <td>{$v['addtime']}</td>
+        <td>{$v['status']}</td>
+        <td>{$v['state']}</td>
+        <td><a href="distriedit.html?id={$v['id']}" class="tablelink"> 查看</a></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <div class="pagin">
+        {$page}
+    </div>
+    <div class="tip">
+      <div class="tiptop"><span>统计信息</span><a></a></div>
+      <div class="tipinfo">
+        <span><img src="/images/ticon.png" /></span>
+        <div class="tipright">
+        <p>一级返利： {$yj}；二级返利： {$ej}</p>
+        <p>总返利： {:$yj+$ej}</p>
+        </div>
+        </div>
+        <div class="tipbtn">
+        <input name="" type="button"  class="sure" value="确定" style="margin-left: 50px;" />
+        </div>
+    </div>
+{/block}
+{block name='js'}
+<script type="text/javascript">
+$('.tablelist tbody tr:odd').addClass('odd');
+</script>
+{/block}

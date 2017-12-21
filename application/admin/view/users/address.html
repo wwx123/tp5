@@ -1,0 +1,51 @@
+{extend name="header" /}
+{block name='title'}用户地址页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    {load href='/js/common.js'}
+{/block}
+{block name='place1'}<a href="#">用户管理</a>{/block}
+{block name='place2'}<a href="#">用户地址</a>{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    
+    <div class="tools">
+        <ul class="toolbar">
+        <li onClick="location.href=history.back(-1)" cdata="manager"><span><img src="/images/t05.png" /></span>返回</li>
+        </ul>
+    </div>
+    
+    <form action="{:url('checkdel')}" method="post" id="delform">
+    <input type="hidden" name="db" value="manager" />
+    <table class="tablelist">
+        <thead>
+        <tr>
+        <th>编号<i class="sort"><img src="/images/px.gif" /></i></th>
+        <th>联系人</th>
+        <th>联系电话</th>
+        <th>地址</th>
+        <th>详细地址</th>
+        <th>标签</th>
+        <th>添加时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php if (is_array($data)) {
+        foreach ($data as $v) {?>
+        <tr>
+        <td>{$v['id']}</td>
+        <td>{$v['consignee']}</td>
+        <td>{$v['tel']}</td>
+        <td>{$v['add1']}</td>
+        <td>{$v['address']}</td>
+        <td>{$v['icon']}</td>
+        <td>{:$v['addtime']==0?'--:--':date('Y-m-d h:i',$v['addtime'])}</td>
+        </tr>
+        <?php }} ?>
+        </tbody>
+    </table>
+    </form>
+    </div>
+{/block}

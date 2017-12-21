@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>左侧导航</title>
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(function(){ 
+  //导航切换
+  $(".menuson li").click(function(){
+    $(".menuson li.active").removeClass("active")
+    $(this).addClass("active");
+  });
+  
+  $('.title').click(function(){
+    var $ul = $(this).next('ul');
+    $('dd').find('ul').slideUp();
+    if($ul.is(':visible')){
+      $(this).next('ul').slideUp();
+    }else{
+      $(this).next('ul').slideDown();
+    }
+  });
+})
+</script>
+</head>
+<body style="background:#f0f9fd;">
+  <a><div class="lefttop"><span></span>管理列表</div></a>
+  <dl class="leftmenu" id="menulist">
+    <?php if (session('admindata')['level']==0) { ?>
+    <dd>
+      <div class="title"><span><img src="/images/leftico01.png" /></span>系统管理</div>
+      <ul class="menuson">
+        <li><cite></cite><a href="/admin.php/admin/basic.html" target="rightFrame">基本信息</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/manager.html" target="rightFrame">管理员列表</a><i></i></li>
+      </ul>
+    </dd>
+    <dd>
+      <div class="title"><span><img src="/images/leftico01.png" /></span>用户管理</div>
+      <ul class="menuson">
+        <li><cite></cite><a href="/admin.php/admin/users.html" target="rightFrame">用户列表</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/invite.html" target="rightFrame">邀请管理</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/coupon.html" target="rightFrame">优惠券</a><i></i></li>
+      </ul>
+    </dd>
+    <dd>
+      <div class="title"><span><img src="/images/leftico01.png" /></span>网站管理</div>
+      <ul class="menuson">
+        <li><cite></cite><a href="/admin.php/admin/index_list.html" target="rightFrame">商城首页</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/usersay.html" target="rightFrame">用户说</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/about.html" target="rightFrame">网站介绍</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/shuffing.html" target="rightFrame">轮播图列表</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/notice.html" target="rightFrame">公告管理</a><i></i></li>
+      </ul>
+    </dd>
+    <dd>
+      <div class="title"><span><img src="/images/leftico01.png" /></span>商品管理</div>
+      <ul class="menuson">
+        <li><cite></cite><a href="/admin.php/admin/goods.html" target="rightFrame">商品列表</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/addgoods.html" target="rightFrame">商品添加</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/goodstype.html" target="rightFrame">商品分类</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/book.html" target="rightFrame">商品订购</a><i></i></li>
+      </ul>
+    </dd>
+    <dd>
+      <div class="title"><span><img src="/images/leftico01.png" /></span>课程管理</div>
+      <ul class="menuson">
+        <li><cite></cite><a href="/admin.php/admin/classes.html" target="rightFrame">课程列表</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/classadd.html" target="rightFrame">课程添加</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/classtype.html" target="rightFrame">课程分类</a><i></i></li>
+      </ul>
+    </dd>
+    <dd>
+      <div class="title"><span><img src="/images/leftico01.png" /></span>订单管理</div>
+      <ul class="menuson">
+        <li><cite></cite><a href="/admin.php/admin/orders.html" target="rightFrame">订单列表</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/subscribe.html" target="rightFrame">课程订阅</a><i></i></li>
+      </ul>
+    </dd>
+    <dd>
+      <div class="title"><span><img src="/images/leftico01.png" /></span>社区管理</div>
+      <ul class="menuson">
+        <li><cite></cite><a href="/admin.php/admin/review.html" target="rightFrame">评论列表</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/topic.html" target="rightFrame">话题列表</a><i></i></li>
+      </ul>
+    </dd>
+    <dd>
+      <div class="title"><span><img src="/images/leftico01.png" /></span>文章管理</div>
+      <ul class="menuson">
+        <li><cite></cite><a href="/admin.php/admin/news.html" target="rightFrame">文章列表</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/newsadd.html" target="rightFrame">文章添加</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/newstype.html" target="rightFrame">文章分类</a><i></i></li>
+      </ul>
+    </dd>
+    <dd>
+      <div class="title"><span><img src="/images/leftico01.png" /></span>审核</div>
+      <ul class="menuson">
+        <li><cite></cite><a href="/admin.php/admin/audit.html" target="rightFrame">商务合作</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/withdraw.html" target="rightFrame">提现审核</a><i></i></li>
+        <li><cite></cite><a href="/admin.php/admin/apply.html" target="rightFrame">推广申请</a><i></i></li>
+      </ul>
+    </dd>
+
+    <?php } ?>
+    <dd>
+      <div class="title">
+      <span><img src="/images/leftico01.png" /></span>统计</div>
+      <ul class="menuson">
+        <li><cite></cite><a href="/admin.php/admin/distrilog.html" target="rightFrame">返利日志</a><i></i></li>
+      </ul>
+    </dd>
+  </dl>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{extend name="header" /}
+{block name='title'}订单列表{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+<script>
+$(function(){
+    $('.click').click(function(){
+        var ct = $(this).attr('cart-data');
+        location.href = 'orders.html?state='+ct;
+    });
+    $(".fh").click(function(){
+      var id = $(this).attr('cart-data');
+      $('#myform input[name=id]').val(id);
+      $(".tip").fadeIn(200);
+    });
+    $(".tiptop a").click(function(){
+      $(".tip").fadeOut(200);
+    });
+    $(".cancel").click(function(){
+      $(".tip").fadeOut(100);
+    });
+    $(".reback").click(function(){
+        location.reload();
+    })
+})
+</script>
+{/block}
+{block name='place1'}<a href="#">订单管理</a>{/block}
+{block name='place2'}订单列表{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    <div class="tools">
+
+        <ul class="toolbar">
+        <li class="click" cart-data="0"><span><img src="/images/t04.png" /></span>未付款</li>
+        <li class="click" cart-data="1"><span><img src="/images/t04.png" /></span>已付款</li>
+        <li class="click" cart-data="2"><span><img src="/images/t04.png" /></span>已发货</li>
+        <li class="click" cart-data="3"><span><img src="/images/t04.png" /></span>已收货</li>
+        <li class="click" cart-data="4"><span><img src="/images/t04.png" /></span>已完成</li>
+        </ul>
+        <ul class="toolbar1">
+        <li class="reback" style="cursor:pointer;"><span><img src="/images/t05.png" /></span>刷新</li>
+        </ul>
+
+    </div>
+    <table class="imgtable">
+    <thead>
+    <tr>
+    <th>编号</th>
+    <th>联系人</th>
+    <th>联系电话</th>
+    <th>详细地址</th>
+    <th>下单时间</th>
+    <th>支付金额</th>
+    <th>返利类型</th>
+    <th>订单状态</th>
+    <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($data as $v) {?>
+    <tr height='30px'>
+    <td>{$v['id']}</td>
+    <td>{$v['consignee']}</td>
+    <td>{$v['tel']}</td>
+    <td>{$v['city']}&nbsp;&nbsp;&nbsp;{$v['address']}</td>
+    <td>{$v['addtime']}</td>
+    <td>￥{$v['money']}</td>
+    <td>{$v['is_rebate']}</td>
+    <td>{$v['state2']}</td>
+    <td><a href="orderedit.html?id={$v['id']}">详情</a>{:$v['state']==1?' | <a class="fh" cart-data="'.$v['id'].'">发货</a>':''}</td>
+    </tr>
+    <?php } ?>
+    </tbody>
+    
+    </table>
+    
+    <div class="pagin">
+        {$page}
+    </div>
+
+    <form action="fhup" method="post" id="myform">
+        <input type="hidden" name="id" value="" />
+        <div class="tip">
+          <div class="tiptop"><span>统计信息</span><a></a></div>
+          <div class="tipinfo">
+            <span><img src="/images/ticon.png" /></span>
+            <div class="tipright">
+            <input class="dfinput" type="text" name="order_sn" placeholder="请输入发货的订单号" required style="width: 110%;margin-top: 20px;" />
+            </div>
+            </div>
+            <div class="tipbtn">
+            <input type="submit"  class="sure" value="确定"/>
+            <input type="button"  class="cancel" value="取消"/>
+            </div>
+        </div>
+    </form>
+{/block}

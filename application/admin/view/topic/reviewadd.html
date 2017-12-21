@@ -1,0 +1,53 @@
+{extend name="header" /}
+{block name='title'}更新页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    <style>
+    a{ cursor: pointer; }
+    div[name=addgoods]>span{ border: solid 1px #c5c5c5;width: 50px;height: 20px;margin:10px 0 10px 10px;padding: 5px;algin: center;line-height: 20px;float:left;overflow:hidden;cursor: pointer; }
+    </style>
+{/block}
+{block name='place1'}<a href="#">社区管理</a>{/block}
+{block name='place2'}<a href="#">评论管理</a>{/block}
+    
+{block name='content'}
+    <div class="formbody">
+        <div class="formtitle"><span>基本信息</span></div>
+        <form action="reviewinsert" method="post" enctype="multipart/form-data">
+        <ul class="forminfo">
+            <li>
+                <label>参与话题</label>
+                <select name="topicid" id="" class="dfinput">
+                    <option value="0">不参与</option>
+                    <?php foreach ($topic as $tv) { ?>
+                    <option value="{$tv['id']}">{$tv['title']}</option>
+                    <?php } ?>
+                </select>
+            </li>
+            <li><label>评论</label><input name="descri" type="text" class="dfinput" value="" /></li>
+            <li class="pic"><label>图片</label><input name="file[]" maxlength="30" type="file" class="dfinput" value="" /><i>建议图片比例</i></li>
+            <li class="pic"><label>图片2</label><input name="file[]" maxlength="30" type="file" class="dfinput" value="" /></li>
+            <li class="pic"><label>图片3</label><input name="file[]" maxlength="30" type="file" class="dfinput" value="" /></li>
+            <li class="pic"><label>图片4</label><input name="file[]" maxlength="30" type="file" class="dfinput" value="" /></li>
+            <li class="pic"><label>图片5</label><input name="file[]" maxlength="30" type="file" class="dfinput" value="" /></li>
+            <li class="pic"><label>图片6</label><input name="file[]" maxlength="30" type="file" class="dfinput" value="" /></li>
+            <li class="pic"><label>图片7</label><input name="file[]" maxlength="30" type="file" class="dfinput" value="" /></li>
+            <li class="pic"><label>图片8</label><input name="file[]" maxlength="30" type="file" class="dfinput" value="" /></li>
+            <li class="pic"><label>图片9</label><input name="file[]" maxlength="30" type="file" class="dfinput" value="" /></li>
+            <li><label>是否启用</label><cite><input name="status" type="radio" value="1" checked="checked" />是&nbsp;&nbsp;&nbsp;&nbsp;<input name="status" type="radio" value="0" />否</cite></li>
+            <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+        </ul>
+        </form>
+    </div>
+{/block}
+
+{block name='js'}
+<script>
+$('.pic').css('display','none');
+$('.pic').eq(0).css('display','block');
+$('.pic').change(function(){
+    $(this).next().css('display','block');
+})
+</script>
+{/block}

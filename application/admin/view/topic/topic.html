@@ -1,0 +1,55 @@
+{extend name="header" /}
+{block name='title'}话题{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    {load href='/js/common/news.js'}
+{/block}
+{block name='place1'}<a href="#">社区管理</a>{/block}
+{block name='place2'}话题列表{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    <div class="tools">
+        <ul class="toolbar">
+        <li class='insert' d-data='topic'><span><img src="/images/t01.png" /></span>添加</li>
+        </ul>
+    </div>
+    <table class="imgtable desct" d-data="classes" >
+    <thead>
+    <tr>
+    <th>编号</th>
+    <th>话题名称</th>
+    <th width="100px;">图片</th>
+    <th>话题描述</th>
+    <th>发布时间</th>
+    <th>帖子数量</th>
+    <th>排序</th>
+    <th>状态</th>
+    <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($data as $v) {?>
+    <tr>
+    <td>{$v['id']}</td>
+    <td><a href="#">{$v['title']}</a></td>
+    <td class="imgtd"><img src="/images/topic/{$v['picture']}" width="50px" height="50px" /></td>
+    <td></td>
+    <td>{$v['addtime']}</td>
+    <td>{$v['reviews']}</td>
+    <td>{$v['sort']}</td>
+    <td>{$v['state']}</td>
+    <td><a href="topicedit.html?id={$v['id']}">详情</a> | <a href="review.html?topic={$v['id']}">查看评论</a> | <a onClick="if(confirm('删除该数据后会删除该课程下所有的目录，且无法彻底恢复，确认要删除吗？')){location.href='topicdel.html?id={$v['id']}'}">删除</a></td>
+    </tr>
+    <?php } ?>
+    </tbody>
+    
+    </table>
+
+    <div class="pagin">
+        {$page}
+    </div>
+    
+    </div>
+{/block}

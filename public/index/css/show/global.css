@@ -1,0 +1,910 @@
+/*
+* @Author: yy
+* @Date:   2017-05-03 16:21:56
+* @Last Modified by:   yy
+* @Last Modified time: 2017-11-15 16:13:44
+*/
+.hide{
+  display: none;
+}
+::-webkit-input-placeholder{
+  color: #f00;
+}
+:-moz-placeholder { 
+　　color: #999;
+}
+::-moz-placeholder { 
+    color: #999;
+}
+:-ms-input-placeholder {
+　　color: #999;
+}
+.icon{
+  display: inline-block;
+  vertical-align: middle;
+}
+.center{
+  text-align: center;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.mainBg{
+    background-color: #ff6672;
+    color: #fff;
+}
+.mainColor{
+    color: #ff6672;
+}
+.bottomFixed{
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    position: absolute;
+}
+.scrollBox::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #ccc;
+    position: absolute;
+}
+textarea{
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.font12{
+  font-size: 12px;
+}
+.abs{
+  position: absolute;
+}
+.rlt{
+    position: relative;
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+}
+.row-h40{
+  line-height: 40px;
+  height: 40px;
+}
+.row-h44{
+  line-height: 44px;
+  height: 44px;
+}
+.borderRadiu2px{
+  border-radius: 2px;
+}
+.mainButton{
+  width: 100%;
+  border-radius: 2px;
+  display: block;
+  color: #fff;
+  text-align: center;
+  background-color: #ff6672;
+  line-height: 40px;
+  height: 40px;
+}
+.ellipsis{
+    /*width:180px;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.page{
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.flex{
+  display: -webkit-flex;
+  display: flex;
+}
+.tc{
+  text-align:center!important;
+}
+.p10{
+  padding:10px!important;
+}
+.brand_color{
+  color:#ff6672!important;
+}
+.f12{
+  font-size:12px!important;
+}
+.f14{
+  font-size:14px!important;
+}
+.cgry{
+  color:#999;
+}
+u.jt {
+    content: " ";
+    background: url(http://oss.flowerplus.cn/oss_svg/2017-11-15/15107329941975.svg) no-repeat center center;
+    background-size: 8px;
+    display: inline-block;
+    height: 14px;
+    width: 8px;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    right:10px;
+    -webkit-transition: -webkit-transform .35s ease-out;
+    transition: transform .35s ease-out;
+}
+u.jt.trans{
+  transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+}
+.borderTop, .borderLeft, .borderRight, .borderBottom,.border1px,.border1pxgray,.border3gray,.bordercgray:after{
+  position: relative;
+}
+.borderTop:before {
+  content: "";
+  border-top: 1px solid #d9d9d9;
+  height: 0px;
+  line-height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform: scaleY(0.5);
+  transform-origin: 0 0;
+}
+.borderBottom:before {
+  content: "";
+  border-bottom: 1px solid #d9d9d9;
+  height: 0px;
+  line-height: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform: scaleY(0.5);
+  transform-origin: 0 bottom;
+
+}
+.borderLeft:after {
+  content: "";
+  border-left: 1px solid #d9d9d9;
+  height: 0px;
+  line-height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  -webkit-transform: scaleX(0.5);
+  -webkit-transform-origin: 0 0;
+  transform: scaleX(0.5);
+  transform-origin: 0 0;
+}
+.borderRight:after{
+  content: "";
+  border-left: 1px solid #d9d9d9;
+  height: 0px;
+  line-height: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  -webkit-transform: scaleX(0.5);
+  -webkit-transform-origin: 100% 0;
+  transform: scaleX(0.5);
+  transform-origin: 100% 0;
+}
+.border1px:after{
+    content: "";
+    border: 1px solid #FD567C;
+    box-sizing: border-box;
+    height: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200%;
+    width: 200%;
+    border-radius:2px;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+}
+.border1pxgray:after,.border3gray:after,.bordercgray:after{
+  content: "";
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    height: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200%;
+    width: 200%;
+    border-radius:2px;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+}
+.border3gray:after{
+  border: 1px solid #333;
+}
+.bordercgray:after{
+  border: 1px solid #ccc;
+}
+.buy-wrap{
+   position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background: #fff;
+    z-index:2;
+} 
+.buy-tohome {
+    position: relative;
+    width: 55px;
+    height: 48px;
+    float: left;
+    display: block; 
+    background-image: url(http://oss.flowerplus.cn/oss_svg/2017-11-15/15107329934190.svg); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 23px;
+}
+.subscription {
+    background-color: #ff6672;
+    margin-left: 55px;
+    color: #fff;
+    font-size:16px;
+    font-weight:bold;
+    line-height: 48px;
+    text-align: center;
+    display: block;
+    -webkit-transition: .2s ease-out;
+    transition: .2s ease-out;
+}
+.fixmask {
+    height:65px;
+    text-align:center;
+    padding-top:15px;
+    color:#aaa;
+    font-size:12px;
+}
+input[type=checkbox],input[type=radio]{
+    -webkit-appearance: none;
+    border: 0 none;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    vertical-align: middle;
+    background-color: #f2f1ef;
+    position:relative;
+}
+input[type=checkbox]:after,input[type=radio]:after{
+    content:"";
+    position:absolute;
+    left:4px;
+    top:5px;
+    display:block;
+    width:8px;
+    height: 4px;
+    border:1px solid #fff;
+    border-width:0 0 1px 1px;
+    transform:rotate(-50deg);
+    -webkit-transform:rotate(-50deg);
+}
+input[type=checkbox]:checked,input[type=radio]:checked{
+    background-color: #FD567C;
+}
+.select{
+    border: 1px solid #ff6672!important;
+    color: #fff!important;
+    background: #FFADBF!important;
+}
+/*.select:before {
+    width:9px;
+    height:9px;
+    content: ''; 
+    position: absolute;
+    right: 0;
+    bottom:0;
+    background:url(/Static/img/new_2017/select.png) no-repeat center;
+    background-size:9px;
+    -webkit-background-size:9px;
+}*/
+input[type=checkbox].switch,input[type=checkbox].switch:checked{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 24px;
+  /* border: 1px solid #DFDFDF; */
+  border-radius: 20px;
+   background-color: #fff;
+  position: relative;
+  transition: all .2s ease-out;
+}
+input[type=checkbox].switch:after {
+    position: absolute;
+    content: "";
+    left:0;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+input[type=checkbox].switch:checked{
+  background: #ff6672;
+}
+input[type=checkbox].switch:checked:after{
+    left:17px;
+    background: #fff;
+}
+/* 加购 */
+.infor_des{
+    padding:12px;
+    background:#fff;
+    border-bottom:8px solid #f5f5f5;
+}
+.infor_des dl{
+    position:relative;
+}
+.free_gift{
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translate(0,-50%);
+    -webkit-transform:translate(0,-50%);
+}
+.infor_des dl dt{
+    width: 80px;
+    height:80px;
+    border:1px solid #efefef;
+    margin-right:15px;
+}
+.infor_des .infor_num{
+    font-size: 12px;
+    color: #999999;
+    margin-top:32px;
+}
+.up_title{
+    background:#fff;
+    padding:12px 30px 12px 12px;
+    font-size: 14px;
+    color: #333333;
+    justify-content: space-between;
+    -webkit-justify-content: space-between
+}
+.up_title dd{
+    color: #999999;
+}
+.up_inform{
+    padding:0px 0px 0px 12px!important;
+}   
+.up_inform dl{
+    padding-bottom:12px;
+    padding-top:12px;
+    position:relative;
+}
+.up_inform .infor_money{
+    color: #FC6B80;
+    margin:8px 0;
+}
+.up_inform .infor_ymoney{
+    font-size: 12px;
+    color: #999999;
+}
+.up_inform dl>input{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translate(0,-50%);
+    -webkit-transform:translate(0,-50%);
+}
+input[type=checkbox]{
+        background-color: #fff;
+        border:1px solid #f2f1ef;
+}
+input[type=checkbox]:checked{
+    border:0px none;
+}
+/* 中间弹窗 */
+.mask{
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  position:fixed;
+  left:0;
+  top:0;
+}
+.middle_alert{
+    position:fixed;
+    top:50%;
+    left:8%;
+    right:8%;    
+    overflow:auto;
+    background-color: #fff;
+    z-index:2;
+    opacity:0;
+    transform:translate(0,-50%) scale(0);
+    -webkit-transform:translate(0,-50%) scale(0);
+    border-radius:3px;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.trans_atrt{
+    transform:translate(0,-50%) scale(1);
+    -webkit-transform:translate(0,-50%) scale(1);
+    opacity:1;
+}
+.middle_alert span{
+    display:inline-block;
+    border: 1px solid #E5E5E5;
+    border-radius: 2px; 
+    text-align: center;
+    position: relative;
+    padding:3px 0;
+    width:30%;
+    margin-bottom:22px;
+}
+.middle_alert span:nth-child(3n-1){
+    margin:0 3%;
+}
+.fix_taboo .tabootip{
+    font-size: 12px;
+    color: #999;
+    margin-top:7px;
+    margin-bottom:5px;
+}
+.middle_alert button{
+    width:100%;
+    height:48px;
+    text-align:center;
+    color:#fff;
+    background:#ff6672;
+    border:0;
+}
+.mask_calcle .cancel{
+    width:50px;
+    height:50px;
+    background:url(/Static/img/cancel.svg) no-repeat;
+    background-size:50px;
+    -webkit-background-size:50px;
+    position:fixed;
+    left:50%;
+    bottom:7vh;
+    transform:translate(-50%,0); 
+    transform:translate(-50%,0);
+}
+
+.alert{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height:60vh;
+  width: 100%;
+  background-color: #fff;
+  z-index: 15;
+  display:none;
+}
+.alert_top{
+  font-size: 14px;
+  position:relative;
+  font-weight:normal;
+  background:#fff;
+  color:#333;
+  padding:15px 10px;
+  border-radius:8px 8px 0 0;
+}
+.alert_top dl dt img{
+  width: 60px;
+  height: 60px;
+  border-radius: 2px;
+}
+.alert_top dl dd{
+  padding-right:20px;
+  padding-left:15px;
+}
+.alert_top .produt-price{
+    margin-top:7px;
+}
+.product-toptit{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.alert_top:after{
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #231916;
+  right: 24px;
+  top: 14px;
+  transform: translate(0,-50%);
+  -webkit-transform: translate(0,-50%);
+  display:none;
+}
+.alert_top .close{
+    position: absolute;
+    right:15px;
+    top:15px;
+    width:22px;
+    height:22px;
+    background:url(http://oss.flowerplus.cn/oss_png/2017-11-15/15107329932928.png) no-repeat center;
+    background-size:22px;
+    -webkit-background-size:22px;
+}
+.cover .sale_out{
+  padding-left:10px;
+  height:270px;
+    overflow-y: auto;
+}
+.cover .sale_out li{
+  padding:10px 20px 10px 40px;
+  font-size: 12px;
+  color: #666666;
+}
+.cover .sale_out .sml_tit{
+  top:10px;
+  font-size:10px;
+}
+ .slid_out {
+    overflow: hidden;
+    text-align:left;
+}
+.slid_in {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 30px;
+    margin-top: -30px;
+    -webkit-transform: translateY(30px);
+    transform: translateY(30px);
+}
+.slid {
+    white-space: nowrap;
+    width: auto;
+}
+.slid li.current {
+    box-shadow: 0 4px 8px 0 #E5E5E5;
+}
+.change_waper_out .changebuy{
+    display: inline-block;
+    text-align: center;
+    width:95px;
+    height:95px;
+    margin-right:10px;
+    color: #333;
+    font-size:10px;
+    position:relative;
+    overflow:hidden;
+}
+/* 老用户样式 */
+.change_waper_out .changebuy .newuser{
+    position:absolute;
+    left:0;
+    top:0;
+    width:40px;
+    height:40px;
+    margin-top:0;
+}
+.change_waper_out .changebuy img{
+    width:45px;
+    margin-top:3px;
+}
+.addbuy .check_add,.addbuy .check_add1{
+    position:absolute;
+    right:5px;
+    top:5px;
+}
+.sku-item .slid_out {
+    padding-bottom:15px;
+}
+.change_waper_out .changebuy.current {
+    color: #FD567C!important;
+}
+.changeprice del{
+    font-size:8px;
+    margin-left:3px;
+}
+input[type=checkbox]:checked{
+    width:15px;
+    height:15px;
+    background:url(http://oss.flowerplus.cn/oss_png/2017-11-15/15107329945987.png) no-repeat; 
+    background-size:15px;
+    -webkit-background-size:15px;
+}
+input[type=checkbox]:checked:after,input[type=checkbox]:checked:before{
+    display:none
+}
+input[type=checkbox].switch:checked:after{
+    display:block
+}
+/* .alert_close{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: absolute;
+    right:15px;
+    background:#fff;
+    top:-36px;
+}
+.alert_close:before {
+    position: absolute;
+    border: 1px solid #231916;
+    border-radius: 3px;
+    width: 13px;
+    height: 0px;
+    background: none;
+    content: '';
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%) rotate(45deg);
+    transform: translate(-50%,-50%) rotate(45deg);
+}
+.alert_close:after {
+    position: absolute;
+    border: 1px solid #231916;
+    border-radius: 3px;
+    width: 0px;
+    height: 13px;
+    background: none;
+    content: '';
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%) rotate(45deg);
+    transform: translate(-50%,-50%) rotate(45deg);
+} */
+.flick-menu-mask{
+    width: 100%;
+    height: 120%;
+    min-height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,.5);
+    z-index:10;
+    display:none
+}
+#sku_content {
+    overflow: auto;
+    position: absolute;
+    overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
+    left: 0;
+    top: 108px;
+    right: 0;
+    bottom:48px;
+}
+.service_date_tit{
+    padding:0px 10px 10px 10px;
+}
+.service_time_con {
+    padding-bottom:15px;
+    display: -webkit-flex;
+    display: flex;
+}
+.service_time_con li {
+    text-align: center;
+    border-radius: 2px;
+    margin-left: 5.5%;
+    min-width: 26%;
+    padding: 0;
+    font-size: 14px;
+    position: relative;
+    color: #666;
+    background: #fff;
+}
+.day {
+    position: relative;
+}
+.service_time_con .on,.sku-item .on{
+    color:#FC6B80;
+    position:relative;
+}
+.sku-item>dd {
+    padding: 0 2%;
+    width: 100%;
+    overflow: hidden;
+}
+.sku-item>dd>span {
+    display: block;
+    padding:6px 0;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #666;
+    flex: 1;
+    min-width:23%;
+    float: left;
+    text-align: center;
+    position: relative;
+    margin: 0 1% 16px;
+}
+.sku-item>dd>span.disable{
+    color: #ccc;
+}
+.alert .option {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.alert .option .buy-submit {
+    width: 100%;
+    background: #ff6672;
+    color: #fff;
+    font-size: 14px;
+    font-weight:bold;
+    display: inline-block;
+    border: 0;
+    line-height: 48px;
+    margin-left: 0;
+}
+.change_tit{
+  margin-top:3px;
+}
+.alert{
+  border-radius: 8px 8px 0 0;
+}
+@media screen and (min-width: 960px){
+  .page {
+      width: 640px;
+      margin: 0 auto;
+      box-shadow: 0 0 1px rgba(0,0,0,.2);
+      overflow: hidden;
+  }
+  .buy-wrap {
+    position: fixed;
+    width: 640px;
+    left: 50%!important;
+    margin-left: -320px;
+  }
+  .flick-menu-mask,.alert,.sure_butouter {
+        position: fixed;
+        width: 640px!important;
+        left: 50%!important;
+        margin-left: -320px;
+    }
+}
+.spec-menu-show {   
+    -webkit-animation:spec-menu-move .5s 1 ease 0s;
+    -moz-animation:spec-menu-move .5s 1 ease 0s;
+    -ms-animation:spec-menu-move .5s 1 ease 0s;
+    -o-animation:spec-menu-move .5s 1 ease 0s;
+    animation:spec-menu-move .5s 1 ease 0s;
+    display:block!important;
+
+}
+.spec-menu-hide {
+  -webkit-animation: spec-menu-back .5s 1 ease 0s;
+  -moz-animation: spec-menu-back .5s 1 ease 0s;
+  -ms-animation: spec-menu-back .5s 1 ease 0s;
+  -o-animation: spec-menu-back .5s 1 ease 0s;
+  animation: spec-menu-back .5s 1 ease 0s
+}
+@-webkit-keyframes spec-menu-move {
+    0%{
+      transform:translateY(100%) 
+     }
+  100% {
+    transform:translateY(0) 
+  }
+}
+@keyframes spec-menu-move {
+  0% {
+   transform:translateY(100%) 
+  }
+
+  100% {
+   transform:translateY(0) 
+  }
+}
+@-webkit-keyframes spec-menu-back {
+  0% {
+   transform:translateY(0) 
+  }
+
+  100% {
+   transform:translateY(100%) 
+  }
+}
+@keyframes spec-menu-back {
+  0% {
+   transform:translateY(0) 
+  }
+
+  100% {
+   transform:translateY(100%) 
+  }
+}
+u.jt.pay_current {
+  margin-top: 3px;
+  -webkit-transition: -webkit-transform .35s ease-out;
+  transition: transform .35s ease-out;
+  transform: rotate(-90deg) !important;
+  -webkit-transform: rotate(-90deg) !important;
+}
+
+.g-poupBox-show{
+    -webkit-animation: showBoxAnimate .35s ease;
+    animation: showBoxAnimate .35s ease; 
+    display: block !important;
+}
+@-webkit-keyframes showBoxAnimate {
+    0% {
+    -webkit-transform:scale(0.2)
+    }
+    100% {
+    -webkit-transform:scale(1)
+    }
+}
+@-moz-keyframes showBoxAnimate {
+    0% {
+    -moz-transform:scale(0.2)
+    }
+    100% {
+    -moz-transform:scale(1)
+    }
+}
+@keyframes showBoxAnimate {
+    0% {
+    transform:scale(0.2)
+    }
+    100% {
+    transform:scale(1)
+    }
+}
+@media only screen and (min-device-width: 320px)and (-webkit-min-device-pixel-ratio: 2) {
+    /* 针对iPhone 4, 5c,5s, 所有iPhone6的放大模式，个别iPhone6的标准模式 */
+  .alert{height:82vh;}
+  .youhui_tipcon .alert{height:48vh;}
+}
+@media only screen and (min-device-width: 375px)and (-webkit-min-device-pixel-ratio: 2) {
+    /* 针对大多数iPhone6的标准模式 */
+  .alert{height:82vh;}
+  .youhui_tipcon .alert{height:48vh;}
+}
+  
+@media only screen and (min-device-width: 375px)and (-webkit-min-device-pixel-ratio: 3) {
+  /* 针对所有iPhone6+的放大模式 */
+  .alert{height:75vh;}
+  .youhui_tipcon .alert{height:48vh;}
+}
+@media only screen and (min-device-width:412px) and (-webkit-min-device-pixel-ratio: 3) {
+  /* 针对所有iPhone6+的标准模式,414px写为412px是由于三星Nexus 6为412px，可一并处理 */
+  .alert{height:70vh;}
+  .youhui_tipcon .alert{height:48vh;}
+}

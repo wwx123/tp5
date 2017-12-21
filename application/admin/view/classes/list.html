@@ -1,0 +1,56 @@
+{extend name="header" /}
+{block name='title'}轮播{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    {load href='/js/common/news.js'}
+{/block}
+{block name='place1'}<a href="#">课程管理</a>{/block}
+{block name='place2'}课程列表 > {$class['classname']}{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    <div class="tools">
+        <ul class="toolbar">
+        <li onClick="location.href='listadd.html?id={$_GET['id']}'"><span><img src="/images/t01.png" /></span>添加</li>
+        <li onClick="location.href='classes.html'"><span><img src="/images/t05.png" /></span>返回</li>
+        </ul>
+    </div>
+    <table class="imgtable desct" d-data="classes" >
+    <thead>
+    <tr>
+    <th>编号</th>
+    <th>课程名称</th>
+    <th width="100px;">展示图</th>
+    <th>发布时间</th>
+    <th>浏览量</th>
+    <th>排序</th>
+    <th>课程类别</th>
+    <th>状态</th>
+    <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($data as $v) {?>
+    <tr>
+    <td>{$v['id']}</td>
+    <td><a href="#">{$v['title']}</a></td>
+    <td class="imgtd"><img src="/images/classes_detail/{$v['picture']}" width="50px" height="50px" /></td>
+    <td>{$v['addtime']}</td>
+    <td>{$v['viewpage']}</td>
+    <td>{$v['sort']}</td>
+    <td>{:$v['state']==0?'文章':$v['state']==1?'音频':'视频'}</td>
+    <td>{$v['status']==1?'正常':'下架'}</td>
+    <td><a href="listedit.html?id={$v['id']}">详情</a> | <a onClick="if(confirm('删除数据后无法恢复，确认要彻底删除吗')){ location.href='listdel.html?id={$v['id']}' }">删除</a></td>
+    </tr>
+    <?php } ?>
+    </tbody>
+    
+    </table>
+
+    <div class="pagin">
+        {$page}
+    </div>
+    
+    </div>
+{/block}

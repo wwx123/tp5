@@ -1,0 +1,64 @@
+{extend name="header" /}
+{block name='title'}订阅{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+<script>
+$(function(){
+    $('.click').click(function(){
+        var ct = $(this).attr('cart-data');
+        location.href = 'subscribe.html?state='+ct;
+    });
+})
+</script>
+{/block}
+
+{block name='place1'}<a href="#">订单管理</a>{/block}
+{block name='place2'}<a href="#">订阅</a>{/block}
+
+{block name='content'}
+    <div class="rightinfo">
+    <div class="tools">
+
+        <ul class="toolbar">
+        <li class="click" cart-data="0"><span><img src="/images/t04.png" /></span>未付款</li>
+        <li class="click" cart-data="1"><span><img src="/images/t04.png" /></span>已付款</li>
+        </ul>
+
+    </div>
+    <table class="imgtable">
+    <thead>
+    <tr>
+    <th>编号</th>
+    <th>订阅用户</th>
+    <th>订阅课程</th>
+    <th>订阅时间</th>
+    <th>课程原价</th>
+    <th>实际支付</th>
+    <th>返利类型</th>
+    <th>订单状态</th>
+    <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($data as $v) {?>
+    <tr height='30px'>
+    <td>{$v['id']}</td>
+    <td>{$v['username']}</td>
+    <td>{$v['classname']}</td>
+    <td>{$v['addtime']}</td>
+    <td>{$v['original']}</td>
+    <td>￥{$v['money']}</td>
+    <td>{$v['is_rebate']}</td>
+    <td>{$v['state2']}</td>
+    <td><a href="subedit.html?id={$v['id']}">详情</a></td>
+    </tr>
+    <?php } ?>
+    </tbody>
+    
+    </table>
+    
+    <div class="pagin">
+        {$page}
+    </div>
+{/block}

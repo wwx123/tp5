@@ -1,0 +1,207 @@
+.poupVerifyBox{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 640px;
+    margin: auto;
+}
+.poupVerifyBox .bgMask{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.3);
+}
+
+.secStep,.firstStep,.lastStep{
+    position: absolute;
+    border-radius: 4px;
+    background-color: #fff;
+    top: 150px;
+    left: 30px;
+    right: 30px;
+    max-width: 320px;
+    margin: auto;
+
+}
+.phoneNum{
+	padding: 46px 30px;
+}
+.phoneNum p{
+	color: #333;
+	font-size:14px;
+	line-height: 24px;
+	text-align: center;
+}
+.code-box {
+    width: 110px;
+    height: 40px;
+    margin: 33px auto 20px;
+}
+.code-box:after{
+    border-color: #e5e5e5;
+}
+
+.poupVerifyBox .inputBox{
+    position: relative;
+    max-width: 200px;
+    margin: 30px auto 0;
+    padding-bottom: 15px;
+    text-align: center;
+    overflow: hidden;
+}
+.poupVerifyBox .inputBox .number{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 32px;
+    width: 32px;
+    height: 32px;
+    margin: 0 5px;
+}
+
+.inputBox .border1px:after{
+    border-color: #e5e5e5;
+}
+.inputBox .current:after{
+    border-color: #666;
+}
+#hiddenInput{
+	position: absolute;
+	left: 0;
+    top: 0;
+    opacity: 0.01;
+    color: transparent;
+    margin-left: -100%;
+    width: 200%;
+    height: 32px;
+    z-index: 10;
+/*     pointer-events:none;
+border-radius: 0; */
+    display: inline-block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 16px;
+    padding: 4px 0;
+    border: 0 none;
+    background: #fff;
+}
+.phoneBox{
+    position: relative;
+    width: 100%;
+    margin: 26px auto 50px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+}
+.iconPhone{
+	width: 6.5%;
+    margin-right: 17px;
+}
+.tel_input{
+	border:none;
+	width: 70%;
+    line-height: 40px;
+    height: 40px;
+}
+.confirmBind{
+	width:100%;
+	height:40px;
+	color: #fff;
+	background: #333;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	border:none;
+}
+.firstStep{
+
+}
+.goBack{
+	width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.goBack::before{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    content: '';
+    width: 8px;
+    height: 8px;
+    transform: rotateZ(45deg);
+    border-bottom: 1px solid #030304;
+    border-left: 1px solid #030304;
+}
+.secTitle{
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin-top: 40px;
+}
+.secP{
+	font-family: PingFangSC-Regular;
+	font-size: 12px;
+	color: #999999;
+	text-align: center;
+}
+.send_agin{
+	border: 1px solid #666666;
+	border-radius: 2px;
+	font-size: 12px;
+	height:24px;
+	color: #666;
+	background: none;
+	display: block;
+    margin: 9px auto;
+}
+.page {
+    height: 100%;
+}
+.sucImg{
+	width: auto;
+    height: 88px;
+    display: block;
+    margin: 16px auto 24px;
+}
+#hasBindPhonetel{
+	font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 10px auto 18px;
+}
+.closeImg{
+	width: 24px;
+    position: absolute;
+    top: -36px;
+    right: 19px;
+}
+.code-box img {
+    height: 40px;
+    vertical-align: top;
+    position: relative;
+    padding: 1px;
+    z-index: 10;
+}
+.code-box {
+    width: 110px;
+    height: 40px;
+    margin: 33px auto 20px;
+}
+.choose_voice{
+    text-align: right;
+    font-size: 10px;
+    color: blue;
+    margin-right: 10px;
+    display: block;
+    margin-bottom: 60px;
+    background: none;
+    border: none;
+    width: 100%;
+}
+.grey{
+    color: #666;
+}

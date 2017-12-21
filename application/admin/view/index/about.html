@@ -1,0 +1,56 @@
+{extend name="header" /}
+{block name='title'}文章列表页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+{/block}
+{block name='place1'}<a href="#">文章管理</a>{/block}
+{block name='place2'}文章列表{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    
+    <div class="tools">
+    
+        <ul class="toolbar">
+        <li class="dataadd" onClick="location.href='aboutadd.html'"><span><img src="/images/t01.png" /></span>添加</li>
+        </ul>
+
+    </div>
+    <form action="del?db=news" id="delform">
+    <table class="tablelist">
+        <thead>
+        <tr>
+        <th>编号<i class="sort"><img src="/images/px.gif" /></i></th>
+        <th>标题</th>
+        <th>发布时间</th>
+        <th>排序</th>
+        <th>状态</th>
+        <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($data as $u=>$v){?>
+        <tr>
+        <td>{$v['id']}</td>
+        <td>{$v['title']}</td>
+        <td>{$v['addtime']>0?date('Y-m-d',$v['addtime']):'--:--'}</td>
+        <td>{$v['sort']}</td>
+        <td>{$v['status']==1?'正常':'禁用'}</td>
+        <td><a href="aboutedit.html?id={$v['id']}" class="tablelink">查看</a> | <a onClick="if(confirm('删除数据后无法恢复，确认要彻底删除吗')){ location.href='del.html?db=about&id={$v['id']}' }" class="tablelink"> 删除</a></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    </form>
+   
+    <div class="pagin">
+        {$page}
+    </div>
+
+    </div>
+{/block}
+
+{block name='js'}
+    {load href='/js/jquery.min.js'}
+    {load href='/js/common/news.js'}
+{/block}

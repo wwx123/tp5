@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="13px" height="16px" viewBox="0 0 13 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/绑定手机号码</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="订单流程" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-订购成功-收花手机不一致-下一步" transform="translate(-98.000000, -357.000000)">
+            <g id="手机号码" transform="translate(45.500000, 340.000000)">
+                <g id="小图标/绑定手机号码" transform="translate(51.132574, 17.000000)">
+                    <g id="Group-2" transform="translate(2.000000, 0.000000)">
+                        <rect id="Rectangle-26" stroke="#999999" stroke-width="0.8" x="0.4" y="0.4" width="11.2" height="15.2" rx="1"></rect>
+                        <rect id="Rectangle" fill="#999999" x="4.33333333" y="1.69913339" width="3.33333333" height="1" rx="0.5"></rect>
+                        <rect id="Rectangle-26" stroke="#999999" stroke-width="0.8" x="2.54002372" y="3.75805764" width="6.91995256" height="9.49327008" rx="1"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

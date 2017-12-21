@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+  <meta name="mobile-agent" content="format=html5; url=">
+  <link rel="canonical" href="">
+  <title>JR classroom</title>
+  <link rel="dns-prefetch" href="http://oss.flowerplus.cn/">
+  <link rel="stylesheet" href="/index/css/index.css">
+  <link rel="stylesheet" href="/index/css/swiper.min.css">
+  <link rel="stylesheet" href="/index/css/shouye.css">
+<script charset="utf-8" src="/index/js/v.js"></script>
+<script src="/index/js/hm.js"></script>
+<script async="" src="/index/js/sensorsdata.min.js"></script>
+<script type="text/javascript" src="/index/js/jquery-1.8.3.min.js"></script>
+<script src="/index/js/jweixin-1.0.0.js"></script>
+<script src="/index/js/m.js"></script>
+<script type="text/javascript" src="/index/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="/index/js/swipe.js"></script>
+
+</head>
+<body>
+<div class="header">
+  <h2 style="margin:0 auto">
+    <!-- JRclassroom -->
+    <img src="/index/images/Logo.svg" alt="" style="vertical-align:middle;">
+  </h2>
+</div>
+<style type="text/css">
+  .module-wrap{
+    display: none;
+  }
+</style>
+<div class="navbar-scroll">
+    <div class="navbar_out">
+        <ul class="navbar">
+            <li class="current"><a href="#home">首页</a></li>
+            <li><a href="#new">单品花束</a></li>
+            <li><a href="#house">混合花束</a></li>
+            <li><a href="#star"><b>MINI</b>花束</a></li>
+            <li><a href="#gift">礼品</a></li>
+            <li><a href="#vase">花瓶</a></li>
+            <li><a href="#around">周边</a></li>
+        </ul>
+    </div> 
+</div>
+<div class="module-wrap borderTop" data-module="home" data-init="1" style="display: block;">
+  <div class="pro_out" style="display:block">
+  <!-- 头部的轮播图  --> 
+  <div class="banner swiper-container-horizontal" style="position:relative">
+      <ul class="swiper-wrapper" style="transform: translate3d(-1875px, 0px, 0px); transition-duration: 0ms;">
+        <?php foreach ($shuf as $sk=>$sv) { ?>
+        <li class="swiper-slide {:$sk==0?'swiper-slide-duplicate swiper-slide-next':''}" data-swiper-slide-index="{$sk}" style="width: 375px;">
+            <a href="{$sv['url']}" class="banner-mob">
+                <img alt="{$sv['title']}" src="/images/shuffing/{$sv['picture']}">
+            </a>
+        </li>
+        <?php } ?>
+        <?php if (isset($shuf[0])) { ?>
+        <li class="swiper-slide swiper-slide-prev" data-swiper-slide-index="3" style="width: 375px;">
+            <a href="{$shuf[0]['url']}" class="banner-mob">
+                <img alt="{$shuf[0]['title']}" src="/images/shuffing/{$shuf[0]['picture']}">
+            </a>
+        </li>
+        <?php } ?>
+        <?php if (isset($shuf[1])) { ?>
+          <li class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" style="width: 375px;">
+              <a href="{$shuf[1]['url']}" class="banner-mob">
+                  <img alt="{$shuf[1]['title']}" src="/images/shuffing/{shuf[1]['picture']}">
+              </a>
+          </li>
+        <?php } ?>
+    </ul>
+    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
+  </div>
+  <!-- 商品系类 -->
+  <p class="tc add_title">{$notice}</p>
+  <div class="product_out">
+  <?php foreach($list1 as $lv) { ?>
+    <a href="{$lv['url']}" class="product">
+        <dl>
+          <dt class="product_smtitle new_smtitle">
+            <span class="new_smtitle_1">{$lv['title']}</span>
+            <div></div>
+            <p class="new_smtitle_3">{$lv['desc']}</p>
+            {:$lv['price']>0?'<span class="new_smtitle_2">'.$lv['price'].'元</span>':''}
+            <p class="new_smtitle_4" style="margin-top: 20px;">▼</p>
+          </dt>
+          <?php if ($lv['state']==0) { ?>
+          <dd class="product_conimg"><img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115757869207.jpg!60" alt="" src="/index/images/1505115757869207.jpg!60"></dd>
+          <?php } ?>
+        </dl>
+    </a>
+  <?php } ?>
+  </div>
+  <?php foreach ($list2 as $lv) { ?>
+  <div class="two_layout_out">
+      <dl>
+        <dt class="product_smtitle new_smtitle">
+          <span class="new_smtitle_1">{$lv['title']}</span>
+          <div></div>
+          <p class="new_smtitle_3">{$lv['desc']}</p>
+          <p class="new_smtitle_4" style="margin-top: 20px;">▼</p>
+        </dt>
+      </dl>
+      <div class="two_layout p15">
+        <?php if (isset($lv['goods'])) { ?>
+        <?php foreach ($lv['goods'] as $lgv) { ?>
+          <a href="show.html?id={$lgv['id']}" class="index_p">
+              <u><img data-src="/images/goods/{$lgv['picture']}" alt="" src="/images/goods/{$lgv['picture']}"></u>
+              <p class="product_p f16"><span>{$lgv['goods']}</span></p>
+              <p class="product_money f16">¥{$lgv['price']}元</p>
+          </a>
+        <?php }} ?>
+      </div>
+  </div>
+  <?php } ?>
+  <!-- 用户说 -->
+  <div class="usersay">
+    <dl>
+      <dt class="product_smtitle new_smtitle" style="padding-bottom: 31%">
+        <span class="new_smtitle_1">用户说</span>
+        <div></div>
+        <p class="new_smtitle_3">您是对我们最好的鼓励</p>
+        <p class="new_smtitle_4" style="margin-top:20px;">▼</p>
+      </dt>
+    </dl>
+    <div class="usersay_list_out">
+      <div class="usersay_list">
+          <ul class="usersay_list_ul">
+          <?php foreach ($usersay as $uv) { ?>
+            <li {:$uv['url']!=null?'onClick=location.href="'.$uv['url'].'"':''}>
+              <img class="usersay_list_img" alt="" src="/images/usersay/{$uv['picture']}" style="max-width: 311.69px;max-height: 211.98px">
+              <p>{$uv['desc']}</p>
+            </li>
+          <?php } ?>
+          </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+  window.swiper_init = null;
+  function lunbo(){
+    if(window.swiper_init != null){
+      return;
+    }
+    window.swiper_init = new Swiper('.banner', {
+      loop: true,
+      autoplay:3500,
+      pagination:'.swiper-pagination',
+      paginationClickable:true,
+      preventClicks:false,
+      autoplayDisableOnInteraction: false,
+      effect:'slide',
+   });
+  }
+   </script>
+</div>
+<div class="module-wrap one_layout_out borderTop" data-module="new" style="display: none;">
+    <div>
+        <p class="classify-banner">
+            <img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115756651208.jpg!60" alt="">
+        </p>
+        <p class="classify-title">
+            <img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115758884884.jpg!60" alt="">
+        </p>
+    </div>
+    <div class="two_layout mb40">
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20170922/15060769341911.jpg!60" alt=""></u>
+            <p class="product_tit">简花•标准</p>
+            <p class="product_p"><span>普通花量，1-15枝鲜花</span></p>
+            <p class="powder">·新用户首单送INS花瓶·</p>
+            <p class="f16">¥99元/月</p>
+        </a>
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20170922/15060770603309.jpg!60" alt=""></u>
+            <p class="product_tit">简花•优选</p>
+            <p class="product_p"><span>大花量，2-15枝鲜花</span></p>
+            <p class="powder">·新用户首单送JULY花瓶·</p>
+            <p class="f16">¥179元/月</p>
+        </a>
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20171026/15089997303592.jpg!60" alt=""></u>
+            <p class="product_tit">惠花•自由双拼</p>
+            <p class="product_p"><span></span></p>
+            <p class="powder">·新用户首单送INS花瓶·</p>
+            <p class="f16">¥99元起/月</p>
+        </a>
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20171101/15095241607089.jpg!60" alt=""></u>
+            <p class="product_tit">奇花•进口</p>
+            <p class="product_p"><span>打卡全世界进口好花</span></p>
+            <p class="powder">·新用户首单送July花瓶·</p>
+            <p class="f16">¥169元起/月</p>
+        </a>
+    </div>
+    <a href="javascript:void(0)" class="one_product">
+        <p class="classify-banner"><img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115758803979.jpg!60" alt=""></p>
+        <p class="classify-title"><img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115758273355.png!60" alt=""></p>
+    </a>
+    <div class="big_pic">
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20170926/15064206905282.jpg!60" alt=""></u>
+            <p class="product_tit">挚爱•进口</p>
+            <p class="product_p"><span>10枝进口玫瑰</span></p>
+            <p class="powder">·新用户首单送赫柏花瓶·</p>
+            <p class="f16">¥399元/月</p>
+        </a>        
+    </div> 
+</div>
+<div class="module-wrap one_layout_out borderTop" data-module="house" style="display: none;">
+    <div>
+        <p class="classify-banner">
+            <img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115758533887.jpg!60" alt="">
+        </p>
+        <p class="classify-title">
+            <img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115758107049.png!60" alt="">
+        </p>
+    </div>
+    <div class="two_layout mb40">
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20170922/15060769745565.jpg!60" alt=""></u>
+            <p class="product_tit">混合•悦花<b class="group">团购 </b></p>
+            <p class="product_p"><span>3种花材 8-12枝</span></p>
+            <p class="powder">·新用户首单送INS花瓶·</p>
+            <p class="f16">¥99元/月</p>
+        </a>
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20171102/15096012462777.jpg!60" alt=""></u>
+            <p class="product_tit">COLOR•缤纷</p>
+            <p class="product_p"><span>1种进口花  2-3种国内精选花</span></p>
+            <p class="powder">·现在购买即送奥兰花瓶·</p>
+            <p class="f16">¥139/月</p>
+        </a>
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20170922/15060773485231.jpg!60" alt=""></u>
+            <p class="product_tit">混合•繁花</p>
+            <p class="product_p"><span>4-6种花材  12枝以上+配叶</span></p>
+            <p class="powder">·新用户首单送JULY花瓶·</p>
+            <p class="f16">¥169元/月</p>
+        </a>
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20170926/15064208074855.jpg!60" alt=""></u>
+            <p class="product_tit">混合•谜藏</p>
+            <p class="product_p"><span>6-8种花材  24枝以上+配叶</span></p>
+            <p class="powder">·新用户首单送波点花瓶·</p>
+            <p class="f16">¥399元/月</p>
+        </a>
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20171022/15086423152004.jpeg!60" alt=""></u>
+            <p class="product_tit">【包年499】混合•悦花</p>
+            <p class="product_p"><span>3种花材 8-12枝</span></p>
+            <p class="powder">·新用户首单送INS花瓶·</p>
+            <p class="f16">¥499/包年</p>
+        </a>                                     
+    </div>
+    <a href="javascript:void(0)" class="one_product">
+        <p class="classify-banner">
+            <img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115758746996.jpg!60" alt="">
+        </p>
+        <p class="classify-title">
+            <img data-src="http://oss.flowerplus.cn/tmp/image/20170912/1505185382454332.png!60" alt="">
+        </p>
+    </a>
+    <div class="big_pic">
+        <a href="show.html">
+            <u><img data-src="http://oss.flowerplus.cn/product/20170922/15060775421621.jpg!60" alt=""></u>
+            <p class="product_tit">ALPHA•艺术</p>
+            <p class="product_p"><span>独一无二  花艺师亲手创作</span></p>
+            <p class="powder">·下单即送专属花器·</p>
+            <p class="f16">¥1699元/月</p>
+        </a>
+    </div>   
+</div>
+<div class="module-wrap one_layout_out borderTop" data-module="star" style="display: none;">
+    <div>
+        <p class="classify-banner">
+            <img data-src="http://oss.flowerplus.cn/tmp/image/20170912/1505186747794464.jpg!60" alt="">
+        </p>
+        <p class="classify-title"> 
+            <img data-src="http://oss.flowerplus.cn/tmp/image/20170912/1505186747144957.png!60" alt="">
+        </p>
+    </div>
+    <div class="two_layout">
+        <a href="show.html">
+            <u class="clip"><img data-src="http://oss.flowerplus.cn/product/20170926/15064063199619.jpg!60" alt=""></u>
+            <p class="product_tit">MINI </p>
+            <p class="product_p"><span>2种花材  2枝花+1枝叶</span></p>
+            <p class="powder">·首次购买套餐送专属花瓶·</p>
+            <p class="f16 star_money">¥79元/月</p>
+        </a>
+        <a href="show.html">
+            <u class="clip"><img data-src="http://oss.flowerplus.cn/product/20170926/15064081218205.jpg!60" alt=""></u>
+            <p class="product_tit">MINI  PLUS </p>
+            <p class="product_p"><span>5种花材  8-10枝</span></p>
+            <p class="powder">·首次购买套餐送专属花瓶·</p>
+            <p class="f16 star_money">¥99元/月</p>
+        </a>
+        <a href="show.html">
+            <u class="clip"><img data-src="http://oss.flowerplus.cn/product/20171011/15077062954149.jpg!60" alt=""></u>
+            <p class="product_tit">MINI ROSE </p>
+            <p class="product_p"><span>8枝玫瑰</span></p>
+            <p class="powder">·首次购买套餐送专属花瓶·</p>
+            <p class="f16 star_money">¥239/月</p>
+        </a>                               
+    </div>
+</div>
+<div class="module-wrap one_layout_out borderTop" data-module="gift" style="display: none;">
+  <div class="one_layout">
+      <a href="javascript:void(0)" class="one_product">
+          <p class="classify-banner">
+              <img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115758104722.jpg!60" alt="">
+          </p>
+          <p class="classify-title">
+              <img data-src="http://oss.flowerplus.cn/tmp/image/20170919/1505807973607813.png!60" alt="">
+          </p>    
+      </a>
+      <div class="two_layout mb50">
+         <!--  <a href="http://static2.flowerplus.cn/f20246">
+              <u class="clip"><img data-src="http://oss.flowerplus.cn/tmp/image/20170912/1505196436129791.jpg!60" alt=""></u>
+              <p class="f16 product_tit">处女座</p>
+              <p class="product_p"><span>同道大叔星座主题花</span></p>
+              <p class="product_money f16">¥99元/束</p>
+          </a> -->
+          <a href="show.html">
+              <u class="clip"><img data-src="http://oss.flowerplus.cn/product/20171018/15083143952126.jpg!60" alt=""></u>
+              <p class="f16 product_tit">天蝎座</p>
+              <p class="product_p"><span>紫宫殿主题运势花</span></p>
+              <p class="product_money f16">¥99元/束</p>
+          </a>                                                                         
+      </div>
+      <a href="javascript:void(0)" class="one_product">
+          <p class="classify-banner">
+              <img data-src="http://oss.flowerplus.cn/oss_jpg/2017-10-16/15081243053026.jpg!60" alt="">
+          </p>
+          <p class="classify-title">
+              <img data-src="http://oss.flowerplus.cn/oss_jpg/2017-10-16/15081228028299.jpg!60" alt="">
+          </p>
+      </a>
+      <div class="two_layout mb50">
+          <!--  <a href="http://static2.flowerplus.cn/f20246">
+               <u class="clip"><img data-src="http://oss.flowerplus.cn/tmp/image/20170912/1505196436129791.jpg!60" alt=""></u>
+               <p class="f16 product_tit">处女座</p>
+               <p class="product_p"><span>同道大叔星座主题花</span></p>
+               <p class="product_money f16">¥99元/束</p>
+           </a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+      </div>
+      <a href="javascript:void(0)" class="one_product">
+          <p class="classify-banner">
+              <img data-src="http://oss.flowerplus.cn/tmp/image/20170912/1505208171122922.jpg!60" alt="">
+          </p>
+          <p class="classify-title">
+              <img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115756701684.png!60" alt="">
+          </p>    
+      </a>
+      <div class="big_pic mb50">
+                  <a href="show.html">
+                      <u class="mb0 clip_big"><img data-src="http://oss.flowerplus.cn/product/20170922/15060780652664.jpg!60" alt=""></u>
+                      <p class="f16 product_tit">鲜花礼品卡</p>
+                      <p class="product_p"><span>实体礼品卡  顺丰包邮</span></p>
+                      <p class="product_money f16">¥39元起</p>
+                  </a>
+      </div>  
+      <a href="javascript:void(0)" class="one_product">
+          <p class="classify-banner">
+              <img data-src="http://oss.flowerplus.cn/tmp/image/20170912/1505208171124021.jpg!60" alt="">
+          </p>
+          <p class="classify-title">
+              <img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115758966734.png!60" alt="">
+          </p>    
+      </a>
+      <div class="big_pic">
+          <a href="show.html">
+              <u class="mb0 clip_big"><img data-src="http://oss.flowerplus.cn/product/20170922/15060781261419.jpg!60" alt=""></u>
+              <p class="f16 product_tit">电子礼品卡</p>
+              <p class="product_p"><span>用户说  微信礼品卡</span></p>
+              <p class="product_money f16">¥59元起</p>
+          </a>
+      </div>
+  </div>
+</div>
+<div class="module-wrap two_layout_out borderTop" data-module="vase" style="display: none;">
+    <div>
+        <p class="classify-title"> 
+            <img data-src="http://oss.flowerplus.cn/tmp/image/20170911/1505115759439557.png" alt="">
+        </p>
+    </div>
+    <div class="two_layout">
+        <a href="show.html">
+            <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20170922/15060784782287.jpg!60" alt=""></u>
+            <p class="product_p f16"><span>石头花瓶</span></p>
+            <p class="product_money f16">￥179元</p>
+        </a>
+        <a href="show.html">
+            <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20170922/15060790004300.jpg!60" alt=""></u>
+            <p class="product_p f16"><span>气泡花瓶</span></p>
+            <p class="product_money f16">￥109元</p>
+        </a>
+        <a href="show.html">
+            <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20171011/15077041595365.jpg!60" alt=""></u>
+            <p class="product_p f16"><span>水晶花瓶4色</span></p>
+            <p class="product_money f16">￥89元</p>
+        </a>
+        <a href="show.html">
+            <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20170922/15060782042948.jpg!60" alt=""></u>
+            <p class="product_p f16"><span>July花瓶</span></p>
+            <p class="product_money f16">￥79元</p>
+        </a>
+        <a href="show.html">
+            <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20171011/15077037355420.png!60" alt=""></u>
+            <p class="product_p f16"><span>卡摩斯花瓶</span></p>
+            <p class="product_money f16">￥109元</p>
+        </a>
+        <a href="show.html">
+            <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20170922/15060782418439.jpg!60" alt=""></u>
+            <p class="product_p f16"><span>MINI小魔瓶</span></p>
+            <p class="product_money f16">￥59元</p>
+        </a>
+        <a href="show.html">
+            <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20170922/15060782844017.jpg!60" alt=""></u>
+            <p class="product_p f16"><span>波点花瓶2色</span></p>
+            <p class="product_money f16">￥79元</p>
+        </a>
+        <a href="show.html">
+            <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20170922/15060783006573.jpg!60" alt=""></u>
+            <p class="product_p f16"><span>赫柏花瓶2色</span></p>
+            <p class="product_money f16">￥79元</p>
+        </a>
+        <a href="show.html">
+            <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20170922/15060782604459.jpg!60" alt=""></u>
+            <p class="product_p f16"><span>芙罗拉花瓶</span></p>
+            <p class="product_money f16">￥199元</p>
+        </a>
+        <a href="show.html">
+            <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20171024/15088258345525.jpg!60" alt=""></u>
+            <p class="product_p f16"><span>北欧风铁艺花架(两款)</span></p>
+            <p class="product_money f16">￥69元</p>
+        </a>
+    </div>
+</div>
+<div class="module-wrap two_layout_out borderTop" data-module="around" style="display: none;">
+  <div>
+      <p class="classify-title">
+          <img data-src="http://oss.flowerplus.cn/tmp/image/20170912/1505197018304958.png!60" alt="">
+      </p>
+  </div>
+  <div class="two_layout">
+              <a href="show.html">
+                  <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20170922/15060790368645.jpg!60" alt=""></u>
+                  <p class="product_p f16"><span>独家液体保鲜液</span></p>
+                  <p class="product_money f16">¥19.9元</p>
+              </a>
+              <a href="show.html">
+                  <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20170922/15060790535567.jpg!60" alt=""></u>
+                  <p class="product_p f16"><span>定制花艺剪</span></p>
+                  <p class="product_money f16">¥79元</p>
+              </a>
+              <a href="show.html">
+                  <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20171110/15103158755969.jpg!60" alt=""></u>
+                  <p class="product_p f16"><span>拉托维亚·手工裸蜡</span></p>
+                  <p class="product_money f16">¥149</p>
+              </a>
+              <a href="show.html">
+                  <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20171110/15103159893802.jpg!60" alt=""></u>
+                  <p class="product_p f16"><span>拉托维亚·手工裸蜡</span></p>
+                  <p class="product_money f16">¥269</p>
+              </a>
+              <a href="show.html">
+                  <u><img src="http://static2.flowerplus.cn/?from=singlemessage" data-src="http://oss.flowerplus.cn/product/20171110/15103160311210.jpg!60" alt=""></u>
+                  <p class="product_p f16"><span>爱尔兰·香薰片</span></p>
+                  <p class="product_money f16">¥62</p>
+              </a>
+  </div>
+</div>
+<!-- 不知道的花加 -->
+<?php foreach ($about as $ak=>$av) { ?>
+<dl class="flower_add {:$ak==0?'mt35':''}" style="display:none">
+    <dt class="borderTop">
+        <span class="f12">{$av['title']}</span>
+        <i class="add_r"></i>
+    </dt>
+    <dd class="borderTop" style="display:none">
+        {$av['content']}
+    </dd>
+</dl>
+<?php } ?>
+<!-- 尾部-->
+<div class="foot">
+  <div class="link">
+    <a href="index.html">首页</a>·
+    <a href="self.html">会员中心</a>·
+    <a href="questions.html">常见问题</a>
+  </div>
+  <p><img src="/index/images/logo_open.svg" alt=""></p>
+</div>
+<!-- 内容切换 -->
+<script type="text/javascript">
+var $moduleName = "";
+function onHashChange(){
+  var moduleName = window.location.hash.substring(1);
+  if(moduleName == "" || $(".module-wrap[data-module='"+moduleName+"']").length != 1){
+      moduleName = 'home';  
+  }
+  if(moduleName == $moduleName){
+    return;
+  }
+  if(moduleName == "" || moduleName == "home"){
+    $(".flower_add").css('display', 'none');
+  }
+  else if(moduleName !== "" || moduleName == !"home"){
+    $(".flower_add").css('display', 'block');
+  }
+  $moduleName = moduleName;
+  var module = $(".module-wrap[data-module='"+$moduleName+"']");
+  $(".module-wrap").hide();
+
+  module.show();
+  //todo 控制菜单高亮
+  $("a[href='"+"#"+$moduleName+"']").parent("li").addClass('current').siblings('li').removeClass('current');
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
+  if(module.attr('data-init') != "1"){
+    module.attr('data-init',"1");
+    module.find('[data-src]').each(function(index, el) {
+      $(el).attr("src",$(el).attr("data-src"));
+    });
+  }
+  if(moduleName == 'home'){
+    lunbo();
+  }
+}
+window.addEventListener("hashchange",onHashChange);
+onHashChange();
+$(".flower_add dt").click(function(event) {
+  if($(this).siblings('dd').css('display')=='none'){
+    $(this).find("i").removeClass('add_r').addClass('current');
+  }else{
+    $(this).find("i").removeClass('current').addClass('add_r');
+  }
+   $(this).siblings('dd').animate({
+      height:'toggle'
+    });
+});
+</script>
+<!-- 内容切换结束 -->
+</body></html>

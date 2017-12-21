@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="keywords" content="JRclassromm">
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <title>FLŌWERPLUS 企业定制</title>
+        <link rel="stylesheet" href="./css/cooperation/m_new.css">
+        <link rel="stylesheet" href="./css/cooperation/m.css">
+        <script charset="utf-8" src="./js/cooperation/v.js"></script>
+        <script src="./js/cooperation/hm.js"></script>
+        <script async="" src="./js/cooperation/sensorsdata.min.js"></script>
+        <script>
+            var _web_base="./".replace(/^https?:/,window.location.protocol);
+            document.domain="flowerplus.cn";
+        </script>
+        <link rel="stylesheet" type="text/css" href="./css/cooperation/reset.css">
+        <link rel="stylesheet" type="text/css" href="./css/cooperation/global.css">
+        <script src="./js/cooperation/jquery.js"></script>
+        <script src="./js/cooperation/jweixin-1.2.0.js"></script>
+        <script src="./js/m.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./css/cooperation/company.css">
+
+    <style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("./images/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("./images/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("./images/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("./images/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style></head>
+  <body ontouchstart="">
+        <div class="page">
+
+<script type="text/javascript" src="./js/cooperation/address.js"></script>
+    <div class="demand_banner">
+        <img src="./images/cooperation/demand_banner.png" alt="">
+    </div>
+    <div class="company_model_out">
+        <div class="company_model">
+            <p>合作类型</p>
+            <ul class="scene_type">
+                <li class="border1pxgray" data-type="1">商务合作</li>
+                <li class="border1pxgray" data-type="2">大客户集采</li>
+                <li class="border1pxgray" data-type="3">媒体采访</li>
+                <li class="border1pxgray" data-type="5">婚礼/酒会/年会用花</li>
+                <li class="border1pxgray" data-type="4">其他</li>
+               <!--  <li class="border1pxgray"><a href="http://t.flowerplus.cn/business_shop/classify">花市在线</a></li> -->
+            </ul>
+        </div>
+    </div>
+    <form action="/" id="company_form">
+        <div class="company_contact_out">
+            <div class="company_contact">
+                <p class="company_form_tit">简述您的需求：</p>
+                <div class="company_xq">
+                    <textarea placeholder="在此输入您的需求" name="customer_remark"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="company_contact_out">
+            <div class="company_contact">        
+                <p class="company_form_tit">您的联系方式：</p>
+                <input type="hidden" name="scene_type">
+                <dl class="item borderBottom">
+                    <dt><u>*</u>姓　　名:</dt>
+                    <dd>
+                        <input type="text" name="contact_name" id="contact_name" placeholder="">
+                    </dd>
+                </dl>
+                <dl class="item borderBottom">
+                    <dt><u>*</u>手机号码:</dt>
+                    <dd>
+                        <input type="tel" name="contact_mobile" id="contact_mobile" placeholder="">
+                    </dd>
+                </dl>
+                <dl class="item borderBottom">
+                    <dt><u>*</u>电子邮箱:</dt>
+                    <dd>
+                        <input type="text" name="contact_email" id="contact_email" placeholder="">
+                    </dd>
+                </dl>
+                <dl class="item borderBottom">
+                    <dt><u>*</u>所在城市:</dt>
+                    <dd>
+                        <input type="text" name="contact_city" id="contact_city" placeholder="">
+                    </dd>
+                </dl>
+                <dl class="item borderBottom">
+                    <dt>公司名称:</dt>
+                    <dd>
+                        <input type="text" name="company_name">
+                    </dd>
+                </dl>
+               <dl class="item borderBottom">
+                    <dt>职　　位:</dt>
+                    <dd>
+                        <input type="text" name="title">
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </from>
+    <div class="fixheight"></div>
+    <div class="com_sub_out">
+        <button type="button" class="company_submit">提交</button>
+    </div>
+<script type="text/javascript">
+    var is_running = false;
+    $(document).ready(function () {
+        $(".scene_type li").click(function () {
+            if (!$(this).attr('data-type')) {
+                window.location.href = 'http://t.flowerplus.cn/business_shop/classify';
+                return;
+            }
+            if ($(this).hasClass('on')) {
+                $(this).removeClass('border1px');
+                $(this).removeClass('on').addClass('border1pxgray');
+            } else {
+                $(this).addClass('border1px');
+                $(this).addClass('on').removeClass('border1pxgray');
+            }
+            $(this).siblings('li').removeClass('on').removeClass('border1px').addClass('border1pxgray');
+        });
+
+        $(".company_submit").click(function () {
+            if(is_running){
+                return;
+            }
+            var scene_type = $(".scene_type").find('.on').attr('data-type');
+            if (scene_type) {
+                $("input[name='scene_type']").val(scene_type);
+            } else {
+                FP.showError('请选择合作类型！');
+                return;
+            }
+            if ($("#company_form input[name=contact_name]").val().length < 2) {
+                FP.showError('请输入姓名！');
+                return;
+            }
+
+            if ($("#company_form input[name=contact_mobile]").val().length < 2) {
+                FP.showError('请输入手机号码！');
+                return;
+            }
+
+            if (!/^1\d{10}$/.test($("#company_form input[name=contact_mobile]").val())) {
+                FP.showError('手机号码格式错误！');
+                return;
+            }
+
+            if ($("#company_form input[name=contact_email]").val().length < 2) {
+                FP.showError('请输入电子邮箱！');
+                return;
+            }
+
+            if (!/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/.test($("#company_form input[name=contact_email]").val())) {
+                FP.showError('电子邮箱格式错误！');
+                return;
+            }
+            if (!$("#company_form input[name=contact_city]").val()) {
+                FP.showError('请输入所在城市！');
+                return;
+            }
+            is_running = true;
+            var btn = $(this);
+            btn.text('正在提交...');
+            var data = $("#company_form").serializeArray();
+            $.post('/product/add_demand', data, function (v) {
+                if (v.f) {
+                    alert(v.data);
+                    window.location.href = '/product/load';
+                } else {
+                    alert(v.data);
+                    is_running = false;
+                    btn.text('提交');
+                }
+            }, 'json');
+        })
+    });
+</script>
+
+        </div>
+
+<script>
+var page_type = '';
+var sat = 'cb037e036c03aad3';
+var sap = 'default';
+var sau = 'https://flowerplus.cloud.sensorsdata.cn:4006/sa?token='+sat+'&project='+sap;
+(function(para) {
+  var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+  w['sensorsDataAnalytic201505'] = n;
+  w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+  var ifs = ['track','quick','register','registerPage','registerOnce','clearAllRegister','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout','trackLink','clearAllRegister'];
+  for (var i = 0; i < ifs.length; i++) {
+    w[n][ifs[i]] = w[n].call(null, ifs[i]);
+  }
+  if (!w[n]._t) {
+    x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+    x.async = 1;
+    x.src = p;
+    y.parentNode.insertBefore(x, y);
+    w[n].para = para;
+  }
+})({
+  sdk_url: '//static2.flowerplus.cn/Static/js/sa/sensorsdata.min.js?_t=20170807',
+  name: 'sa',
+  web_url: 'https://flowerplus.cloud.sensorsdata.cn/',
+  server_url: sau,
+  heatmap: {
+      isTrackLink: false,
+      //设置成 true 后，我们会自动给 a 标签绑定一个 sa.trackLink() 方法（详见本页 3.3 ），如果是单页面 a 标签不涉及页面跳转或者 a 标签的点击是下载功能，建议不要打开。默认 false 。
+      loadTimeout:  1000,
+      //设置多少毫秒后开始渲染点击图
+      collect_url: function(){
+          // 限制只采集微信端
+          // && location.pathname.match(/^(\/)$|^(\/my\/?)$/g) !== null
+          if (location.hostname === 't.flowerplus.cn' || location.hostname === 'static2.flowerplus.cn') {
+              return true;
+          }
+      }
+      //返回true会采集当前页面的数据，返回false等假值表示不采集当前页面,设置这个函数后，内容为空的话，默认是返回假的。不写这个函数，默认是采集所有页面。
+  }
+  ,
+  // debug_mode:true,
+  debug_mode_upload:true
+});
+
+
+
+
+
+  param_data = {};
+
+  
+  
+  sa.quick('autoTrackWithoutProfile', param_data);
+
+</script>
+
+
+<script type="text/javascript" src="./js/cooperation/fpa.channel.js"></script>
+<script>
+var fp_utm_source = getQueryString('utm_source');
+if (fp_utm_source != '' && fp_utm_source != null) {
+    setCookie('fpa_channel_utm_source', fp_utm_source, null, '/', '.flowerplus.cn');
+}
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?deb1341df19187ec5a232b519d62c8a9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!--暂停google统计-->
+<!-- 
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+              ga('create', 'UA-93082500-1', 'auto');
+              ga('send', 'pageview');
+</script>
+-->
+<script>
+    function exist_ga(){return typeof ga == 'function';}
+    function ga_buy(){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"立即购买",eventLabel:"详情页购买"})}
+    function ga_submit(){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"确认下单",eventLabel:"订单填写页"})}
+    function ga_cancel(){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"取消订单",eventLabel:"订单确认页"})}
+    function ga_pay(id,product_name,payment){if(!exist_ga())return;ga("send",{hitType:"event",eventCategory:"订购流程",eventAction:"去支付",eventLabel:"订单确认页"});ga("require","ecommerce");ga("ecommerce:addTransaction",{"id":id,"affiliation":product_name,"revenue":payment,});ga("ecommerce:send")};
+</script>
+
+    
+
+</body></html>

@@ -1,0 +1,26 @@
+{extend name="header" /}
+{block name='title'}返利详情页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+{/block}
+{block name='place1'}<a href="#">统计</a>{/block}
+{block name='place2'}详情{/block}
+    
+{block name='content'}
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+
+    <ul class="forminfo">
+        <li><label>消费人</label><input value="{$data['payname']}" type="text" class="dfinput" readonly/></li>
+        <li><label>获利人</label><input value="{$data['username']}" type="text" class="dfinput" readonly/></li>
+        <li><label>订单编号</label><input value="{$data['orderid']}" type="text" class="dfinput" readonly/></li>
+        <li><label>商品</label><input value="{$data['orderid']}" type="text" class="dfinput" readonly/></li>
+        <li><label>支付金额</label><input value="{$data['pay']}" type="text" class="dfinput" readonly/></li>
+        <li><label>获利</label><input value="{$data['money']}" type="text" class="dfinput" readonly/></li>
+        <li><label>描述</label><input value="{$data['decsribe']}" type="text" class="dfinput"/></li>
+        <li><label>记录时间</label><input value="{$data['addtime']}" type="text" class="dfinput" readonly/></li>
+        <li><label>类别</label><input value="{$data['status']}" type="text" class="dfinput" readonly/></li>
+    </ul>
+    </div>
+{/block}

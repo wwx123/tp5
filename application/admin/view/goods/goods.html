@@ -1,0 +1,74 @@
+{extend name="header" /}
+{block name='title'}公告页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    {load href='/js/common.js'}
+{/block}
+{block name='place1'}<a href="#">商品管理</a>{/block}
+{block name='place2'}商品列表{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    <div class="tools">
+        <ul class="toolbar">
+        <li onClick="dataadd('goods')" cdata="goods"><span><img src="/images/t01.png" /></span>添加</li>
+        </ul>
+    </div>
+    <table class="imgtable">
+    <thead>
+    <tr>
+    <th width="100px;">展示图</th>
+    <th>商品名</th>
+    <th>分类</th>
+    <th>价格</th>
+    <th>浏览数</th>
+    <th>下单数</th>
+    <th>库存</th>
+    <th>状态</th>
+    <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($data as $v) {?>
+    <tr>
+    <td class="imgtd"><img src="/images/goods/{$v['picture']}" width="50px" height="50px" /></td>
+    <td><a href="#">{$v['goods']}</a><p>发布时间：{:$v['addtime']==0?'--:--':date('Y-m-d h:i',$v['addtime'])}</p></td>
+    <td><?php if(!empty($v['typesid'])&&$v['typesid']>0){?>{$v['typename']}<p>ID: {$v['typesid']}</p><?php }else{ ?><p>无分类</p><?php } ?></td>
+    <td>￥{$v['price']}</td>
+    <td>{$v['pageview']}次</td>
+    <td>{$v['singular']}次</td>
+    <td>{:$v['stock']==-1?'无限量':$v['stock']}</td>
+    <td id="s{$v['id']}">{$state[$v['state']]}</td>
+    <td><a href="javascript:;" onClick="del('goods','{$v['id']}')">删除</a> | <a href="" onClick="edit('goods','{$v['id']}')">详情</a> | <a href="javascript:;" class="upState" cid="{$v['id']}" sdata="{$v['state']}">{$state2[$v['state']]}</a></td>
+    </tr>
+    <?php } ?>
+    </tbody>
+    
+    </table>
+    
+    <div class="pagin">
+        {$page}
+    </div>
+    </div>
+{/block}
+
+{block name='js'}
+<script>
+statearr = ['上架','已下架'];
+statearr2 = ['下架','上架'];
+$(".upState").click(function(){
+    cid = $(this).attr('cid');
+    state = $(this).attr('sdata');
+    db = 'goods';
+    $.post("{:url('upState')}",{db:db,id:cid,state:state},function(res){
+        if (res!=-1) {
+            $("a[cid="+cid+"]").html(statearr2[res]);
+            $("a[cid="+cid+"]").attr('sdata',res);
+            $('#s'+cid).html(statearr[res]);
+        }
+    });
+})
+</script>
+{/block}
+

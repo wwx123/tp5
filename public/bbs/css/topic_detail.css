@@ -1,0 +1,26 @@
+.topPanel .banner{
+    max-height: 8rem;
+    overflow: hidden;
+}
+.descrip .title{
+    line-height: 1.4rem;
+    padding: 0.8rem 0;
+}
+.attention{
+    padding: 0.5rem 0;
+    align-items: center;
+}
+.newTitle{
+    line-height: 2.2rem;
+}
+.postingIcon{
+    position: fixed;
+    width: 2.8rem;
+    height: 2.8rem;
+    bottom: 2rem;
+    right: 0;
+    background: url('../images/photo.png') no-repeat center #FC6B80;
+    background-size: 1.5rem 1.2rem;
+    box-shadow: 0 0 5px rgba(252,107,128,0.6);
+    border-radius: 100%;
+}

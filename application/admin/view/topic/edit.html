@@ -1,0 +1,60 @@
+{extend name="header" /}
+{block name='title'}订单详情{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+{/block}
+{block name='style'}
+<style>
+.imgtable{
+    width: 80%;
+    margin: 0 0 20px 50px;
+}
+.imgtable th,.imgtable tr{
+    width: 25%;
+    border: solid 1px #c5c5c5;
+}
+</style>
+{/block}
+{block name='place1'}<a href="#">论坛管理</a>{/block}
+{block name='place2'}评论详情{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    <div class="tools" style="height: 10px"></div>
+    <table class="imgtable">
+        <tr>
+            <th>用户</th>
+            <td>{$data['username']}</td>
+            <th>用户编号</th>
+            <td>{$data['usersid']}</td>
+        </tr>
+        <tr>
+            <th>发表时间</th>
+            <td>{$data['addtime']}</td>
+            <th>状态</th>
+            <td>{$data['state2']}</td>
+        </tr>
+    </table>
+    <table class="imgtable">
+        <tr>
+            <th>话题</th>
+            <td>{$data['topicname']}</td>
+        </tr>
+        <tr>
+            <th colspan="2" style="text-align:center">发表内容</th>
+        </tr>
+        <tr>
+            <th colspan="2">{$data['descri']}</th>
+        </tr>
+        <tr>
+            <td colspan="2" class="img">
+            <?php if (is_array($data['pics'])) { ?>
+            <?php foreach($data['pics'] as $pv) { ?>
+                <img src="/images/review/{$pv}" width="100px" height="100px" alt="">
+            <?php }} ?>
+            </td>
+        </tr>
+    </table>
+    </div>
+{/block}

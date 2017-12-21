@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Mobile Devices Support @begin -->
+<meta name="referrer" content="always">
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta name="referrer" content="always">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>帖子详情</title>
+<link rel="stylesheet" type="text/css" href="css/base.css?_t=20171031">
+<script src="js/jquery.js?_t=20171020"></script>
+<script>
+    var g_rem = 20;
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth){
+                    clientWidth = 375;
+                }
+                clientWidth = clientWidth > 640 ? 640 : clientWidth;
+                g_rem = 20 * (clientWidth / 375);
+                docEl.style.fontSize =  g_rem + 'px';
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+    var _web_base="http://t.flowerplus.cn/".replace(/^https?:/,window.location.protocol);
+    document.domain="flowerplus.cn";
+</script>
+       <link rel="stylesheet" type="text/css" href="css/detail.css">
+    </head>
+    <body>
+                <div class="main abs" >
+            <div class="topicDetail bgWhite rlt" data-id="19576" data-cid="449343" >
+                                <div class="authorBox flex">
+                    <div class="authorLeft flex">
+                        <div class="headImg"><img src="{$review['usersid']['picture']}"></div>
+                        <div class="authorInfo">
+                            <div class="author">{$review['usersid']['username']}</div>
+                            <div class="publishTime f10 color_9b">{$review['addtime']}</div>
+                        </div>
+                    </div> 
+                    <!--<div id="attentionBtn" class="inline tc f12 rlt mainColor2"><span class="addIcon inline"></span>关注</div>-->
+                </div>
+                <div class="topicCont">
+                    {$review['descri']}
+                </div>
+                <div class="topicImgBox flex">
+                    {$review['picture']}
+                </div>
+                
+                <div class="bottomSupport flex">
+                    <div class="supportRow">
+                        <?php foreach ($review['users'] as $tk=>$tuv) { ?>
+                            <div class="headImg inline"><img src="{$tuv['picture']}"></div>
+                            {:$tk>7?'<div class="ellipse inline">...</div>':''}
+                        <?php } ?>
+                    </div>
+                    <div id="support_author" class="support ">
+                        <span class="icon icon_support"></span>赞 <span class="support_num">{$review['likes']}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="commitPanel bgWhite pad16">
+                <div id="commit_title" class="tilte">评论 <span class="commitTotal">{$review['ans']}</span></div>
+            </div>
+            <?php foreach ($chil as $rv) {?>
+            <div class="commitPanel bgWhite pad16">
+                <div class="commitList rlt clearfix" data-cid="3264680" data-rid="17241">
+                    <div class="mainCont">
+                        <div class="flex">
+                            <div class="headImg">
+                                <img src="{$rv['usersid']['picture']}">
+                            </div>
+                            <div class="userInfo">
+                                <div class="name">{$rv['usersid']['username']}</div>
+                                <div class="publishTime f10 color_9b">{$rv['addtime']}</div>
+                                <div class="pub_cont">{$rv['descri']}</div>
+                            </div>
+                            <div class="support abs color_9b sup_class"><span class="icon icon_support"></span> <span class="inline support_num">{$rv['likes']}</span></div>
+                        </div>
+                        <div class="review reviewBtn tr fr">回复</div>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+            <p class="loadEndTips color_9b tc f12" style="padding: 1rem 0;">已全部加载</p>
+        </div>
+        <div class="publishFixed pad16 bgWhite boxsizing flex">
+            <input id="reviewInput" type="text" class="boxsizing" placeholder="在这里说点什么">
+            <div id="publishBtn"></div>
+            <div id="collectBtn" class=""></div>
+        </div>
+    </body>
+</html>
+        <script>
+            ;(function(){
+                var page = {
+                    'pageNo' : 1,
+                    'isLoading' : false,
+                    'isLoadEnd' : false,
+                    'type' : 1,
+                    'id' : FP.getQueryString('id'),
+                    'isCommet' : FP.getQueryString('isCommet'),
+                } 
+                var replyObj = {
+                    'pid' : $('.topicDetail').attr('data-id'),//帖子
+                    'cid' : $('.topicDetail').attr('data-cid'),//帖子发布者的cid
+                    'rid' : '', //当前这条评论的id
+                    'is_next_reply' : 0, //0是直接回复该评论，1是@某人回复
+                    'isReply1' : true, //是否直接评论当前帖子
+                    'curElem' : '', //当前被评论的节点
+                    'curUserName' : '', //被@人的名字
+                    'totalReply' : 0,
+                }
+                var userInfo = {"id":"8706627","nick":"\u738b\u5c09\u5e2d","avatar":"http:\/\/wx.qlogo.cn\/mmopen\/WncGPzFso3dvbWd4QVybxfdLn99MKfZicqWQu9f1NfybicmiaN05M3XBF8XjU6rw4qma5F7aGsjEQf8QCRLjvsWOIrz29plTvy4\/0","level":"LV1"};
+                var previewImgList = [];
+                var imgList = [{"img":"http:\/\/oss.flowerplus.cn\/sns_image\/20171219\/15136503377617.jpg","img_thumb":"http:\/\/oss.flowerplus.cn\/sns_image\/20171219\/15136503377617.jpg!sml","width":1280,"height":960}];
+                if(imgList && imgList.length > 0){
+                    //var imgClassName = (imgList.length > 2 && imgList.length != 4) ? 'tree' : imgList.length > 2 ? 'two' : '';
+                    //$('.topicImgBox .imgList ').addClass(imgClassName);
+                    $.each(imgList,function(index,item){
+                        previewImgList.push(item.img);
+                    })
+                }
+                var isMoved = false;
+                if(page.isCommet){
+                    setTimeout(function(){
+                        $('#reviewInput').focus();
+                    },200)
+                }
+                $('#reviewInput').on('touchend',function(){
+                    replyObj.cid = $('.topicDetail').attr('data-cid'),
+                    replyObj.isReply1 = true,
+                    replyObj.is_next_reply = 0;
+                }).on('blur',function(){
+                    $('#reviewInput').attr('placeholder','在这里说点什么');
+                });
+                $('.main').scroll(function(e){
+                    if ($('.main').scrollTop() > $('.commitPanel').outerHeight(true) - $(window).height() + 2.8*g_rem) {
+                        getReplyList();
+                    }
+                })
+                $('.imgList img').on('touchstart',function(){//点击预览图片
+                    isMoved = false;
+                }).on('touchmove',function(){//点击预览图片
+                    if(isMoved) return;
+                    isMoved = true;
+                }).on('touchend',function(){//点击预览图片
+                    if(isMoved) return;
+                    var index = $(this).parent('.imgList').index();
+                    wx.ready(function(){
+                        wx.previewImage({
+                            current: previewImgList[index], 
+                            urls: previewImgList 
+                        });
+                    })
+                })
+                getReplyList();
+                function getReplyList(){
+                    if(page.isLoading || page.isLoadEnd) return;
+                    page.isLoading = true;
+                    FP.loading().show();
+                    var data = {
+                        'pid' : page.id,
+                        'next' : page.pageNo
+                    }
+                    FP.ajaxPost('new1',data,function(data){
+                        page.isLoading = false;
+                        FP.loading().hide();
+                        if(data.msg == 'success'){
+                            var result = data.result;
+                            if(!result) return;
+                            replyObj.totalReply = result.reply_total;
+                            $('.commitTotal').text(result.reply_total);
+                            var str = '';
+                            var hasReply = false;
+                            if(result.list && result.list.length > 0){
+                                hasReply = true;
+                                $.each(result.list,function(index,item){
+                                    var next_reply = '';
+                                    var level = item.level ? 'Lv.' + item.level.substring(2) : '';
+                                    var sup_class = item.is_reply_parise ? 'checked' : '';
+                                    if(item.next_reply.list.length > 0){
+                                        var replyStr = '';
+                                        $.each(item.next_reply.list,function(index2,item2){
+                                            var className = index2 > 2 ? 'hideItem hide' : '';
+                                            if(item2.f_user){
+                                                replyStr += '<div class="line f12 '+className+'" data-cid="'+item2.cid+'">'+
+                                                        '<span class="userName cur_user" data-nick="'+item2.user.nick+'">'+item2.user.nick+'</span>回复'+
+                                                        '<span  class="userName bel_user" data-nick="'+item2.f_user.nick+'">@'+item2.f_user.nick+'</span>：'+
+                                                        '<span class="review_cont">'+item2.content+'</span>'+
+                                                    '</div>';
+                                            }else{
+                                                replyStr += '<div class="line f12 '+className+'" data-cid="'+item2.cid+'">'+
+                                                        '<span class="userName cur_user" data-nick="'+item2.user.nick+'">'+item2.user.nick+'</span>：'+
+                                                        '<span class="review_cont">'+item2.content+'</span>'+
+                                                    '</div>';
+                                            } 
+                                        })
+                                        if(item.next_reply.list.length > 3){
+                                            next_reply += '<div class="reviewBox"><div class="reviewBoxLine">'+replyStr+'</div><div class="viewMoreBtn mainColor2 tr">共'+item.next_reply.list.length+'条回复<span class="icon"></span></div></div>'
+                                        }else{
+                                            next_reply += '<div class="reviewBox"><div class="reviewBoxLine">'+replyStr+'</div></div>'
+                                        }
+                                    }
+                                    str += '<div class="commitList rlt clearfix" data-cid="'+item.cid+'" data-rid="'+item.id+'">'+
+                                        '<div class="mainCont">'+
+                                            '<div class="flex">'+
+                                                '<div class="headImg"><img src="'+item.avatar+'"></div>'+
+                                                '<div class="userInfo">'+
+                                                    '<div class="name">'+item.nick+'<span class="level">'+level+'</span></div>'+
+                                                    '<div class="publishTime f10 color_9b">'+item.created_at+'</div>'+
+                                                    '<div class="pub_cont">'+item.reply+'</div>'+next_reply+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="support abs color_9b '+sup_class+'">'+
+                                                '<span class="icon icon_support"></span> <span class="inline support_num">'+item.count_parise+'</span>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="review reviewBtn tr fr">回复</div>'+
+                                    '</div>'
+                                }) 
+                                $('.commitPanel').append(str);
+                            }else{
+                                if($('.noTips').length == 0){
+                                    $('.commitPanel').after('<p class="noTips color_9b tc f12" style="padding: 2rem 0;">暂无评论</p>');
+                                }
+                            }
+                            if( page.pageNo >= result.all_page){
+                                page.isLoadEnd = true;
+                                hasReply && $('.loadEndTips').show();
+                            }
+                            page.pageNo ++;
+                        }else{
+                            FP.showError(data.msg);
+                        }
+                    },function(){
+                        FP.loading().hide();
+                        page.isLoading = false;
+                        FP.showError('服务繁忙，请重试')
+                    })
+                }
+                $('.commitPanel').on('touchstart','.support',function(){ //点击支持评论者
+                    if(page.isLoading) return;
+                    var cur = $(this).closest('.support');
+                    if(!cur.hasClass('checked')){
+                        page.isLoading = true;
+                        var list = cur.closest('.commitList');
+                        var data = {
+                            'pid' : $('.topicDetail').attr('data-id'),
+                            'rid' : list.attr('data-rid'),
+                            'f_cid' : list.attr('data-cid'),
+                        }
+                        FP.ajaxPost('/sns_wx/addReplyPraise',data,function(data){
+                            page.isLoading = false;
+                            if(data.msg == 'success'){
+                                var num = cur.find('.support_num').text();
+                                num = num ? parseInt(num) : 0;
+                                cur.addClass('checked');
+                                cur.find('.support_num').text(++num);
+                            }else{
+                                FP.showError(data.msg);
+                            }
+                        },function(){
+                            page.isLoading = false;
+                            FP.showError('服务繁忙，请重试')
+                        })
+                    }
+                })
+                $('#support_author').on('touchstart',function(){ //点击支持帖子
+                    if(page.isLoading) return;
+                    var cur = $(this).closest('.support');
+                    if(!cur.hasClass('checked')){
+                        var data = {
+                            'pid' : $('.topicDetail').attr('data-id'),
+                            'f_cid' : $('.topicDetail').attr('data-cid'),
+                        }
+                        page.isLoading = true;
+                        FP.ajaxPost('/sns_wx/addPraise',data,function(data){
+                            page.isLoading = false;
+                            if(data.msg == 'success'){
+                                cur.addClass('checked');
+                                var node = cur.find('.support_num');
+                                var num = node.text();
+                                num = num ? parseInt(num) : 0;
+                                node.text( ++num );
+                            }else{
+                                FP.showError(data.msg);
+                            }
+                        },function(){
+                            page.isLoading = false;
+                            FP.showError('服务繁忙，请重试')
+                        })
+                    }
+                })
+                $('#attentionBtn').on('touchstart',function(){//点击关注
+                    var cur = $(this).closest('#attentionBtn');
+                    if(cur.hasClass('checked')){
+                        cur.removeClass('checked');
+                    }else{
+                        cur.addClass('checked');
+                    }
+                })
+                $('#collectBtn').on('touchstart',function(){//点击收藏
+                    if(page.isLoading) return;
+                    page.isLoading = true;
+                    var data = {
+                        'pid' : $('.topicDetail').attr('data-id'),
+                        'f_cid' : $('.topicDetail').attr('data-cid'),
+                    }
+                    FP.ajaxPost('/sns_wx/addCollect',data,function(data){
+                        page.isLoading = false;
+                        if(data.msg == 'success'){
+                            var cur = $('#collectBtn');
+                            if(cur.hasClass('checked')){
+                                cur.removeClass('checked');
+                            }else{
+                                cur.addClass('checked');
+                            }
+                        }else{
+                            FP.showError(data.msg);
+                        }
+                    },function(){
+                        page.isLoading = false;
+                        FP.showError('服务繁忙，请重试')
+                    })
+                })
+                $('.commitPanel').on('touchstart','.viewMoreBtn',function(){ //点击查看更多
+                    var par = $(this).closest('.reviewBox');
+                    par.find('.hideItem').slideToggle(0);
+                    par.find('.viewMoreBtn .icon').toggleClass('up');
+                })
+                $('.commitPanel').on('touchstart','.reviewBtn',function(e){ //点击回复
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var par = $(this).closest('.commitList ');
+                    replyObj.cid = $(this).closest('.commitList').attr('data-cid');
+                    replyObj.rid = par.attr('data-rid');
+                    replyObj.is_next_reply = 0;
+                    replyObj.isReply1 = false;
+                    replyObj.curElem = par;
+                    $('#reviewInput').trigger('focus'); 
+                })
+                $('.commitPanel').on('touchstart','.userName',function(e){ //点击@某人回复
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var par = $(this).closest('.commitList ');
+                    replyObj.rid = par.attr('data-rid');
+                    replyObj.cid = $(this).closest('.line').attr('data-cid');
+                    replyObj.is_next_reply = 1;
+                    replyObj.isReply1 = false;
+                    replyObj.curElem = par;
+                    replyObj.curUserName = '@' + $(this).attr('data-nick');
+                    $('#reviewInput').attr('placeholder',replyObj.curUserName).trigger('focus'); 
+                })
+                $('#publishBtn').on('touchstart',function(){//点击发布评论
+                    var val = $('#reviewInput').val();
+                    if($.trim(val).length == 0){
+                        FP.showError('内容不能为空');
+                        return;
+                    }
+                    if(page.isLoading) return;
+                    page.isLoading = true;
+                    var data,url;
+                    if(replyObj.isReply1){
+                        data = {
+                            'pid' : replyObj.pid, 
+                            'f_cid' : replyObj.cid,
+                            'reply' : val,
+                        }
+                        url = '/sns_wx/addReplay';
+                    }else{
+                        data = {
+                            'pid' : replyObj.pid, 
+                            'f_cid' : replyObj.cid,
+                            'rid' : replyObj.rid,
+                            'content' : val,
+                            'is_next_reply' : replyObj.is_next_reply,
+                            'is_admin' : 0,
+                            'is_vest' : 0,
+                            'is_editor' : 0,
+                        }
+                        url = '/sns_wx/saveNextReply';
+                    }
+                    FP.ajaxPost(url,data,function(data){
+                        page.isLoading = false;
+                        if(data.msg == 'success'){
+                            $('#reviewInput').val('').attr('placeholder','在这里说点什么');
+                            $('#reviewInput').blur();
+                            replyObj.totalReply ++;
+                            $('.commitTotal').text(replyObj.totalReply);
+                            $('.noTips').length > 0 && $('.noTips').remove();
+                            if(replyObj.isReply1){
+                                var str = '<div class="commitList rlt" data-cid="'+userInfo.id+'" data-rid="'+data.result+'">'+
+                                        '<div class="mainCont">'+
+                                            '<div class="flex">'+
+                                                '<div class="headImg"><img src="'+userInfo.avatar+'"></div>'+
+                                                '<div class="userInfo">'+
+                                                    '<div class="name">'+userInfo.nick+'<span class="level">'+userInfo.level+'</span></div>'+
+                                                    '<div class="publishTime f10 color_9b">刚刚</div>'+
+                                                    '<div class="pub_cont">'+val+'</div>'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="support abs color_9b">'+
+                                                '<span class="icon icon_support"></span> <span class="inline support_num">0</span>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="review reviewBtn tr">回复</div>'+
+                                    '</div>'
+                                $('#commit_title').after(str);
+                                $('.main').animate({scrollTop: $('.topicDetail').outerHeight(true)}, 300);
+                            }else{
+                                var str = '';
+                                if(replyObj.is_next_reply){
+                                    str = '<div class="line f12" data-cid="'+userInfo.id+'">'+
+                                            '<span class="userName cur_user" data-nick="'+userInfo.nick+'">'+userInfo.nick+'</span>回复'+
+                                            '<span  class="userName bel_user" data-nick="'+replyObj.curUserName+'">'+replyObj.curUserName+'</span>：'+
+                                            '<span class="review_cont">'+val+'</span>'+
+                                        '</div>';
+                                        replyObj.curElem.find('.reviewBoxLine').append(str);
+                                }else{
+                                    if(replyObj.curElem.find('.reviewBox').length == 0){
+                                        str = '<div class="reviewBox">'+
+                                            '<div class="reviewBoxLine">'+
+                                                '<div class="line f12" data-cid="'+userInfo.id+'">'+
+                                                '<span class="userName cur_user" data-nick="'+userInfo.nick+'">'+userInfo.nick+'</span>：'+
+                                                '<span class="review_cont">'+val+'</span>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>';
+                                        replyObj.curElem.find('.userInfo').append(str);
+                                    }else{
+                                        str = '<div class="line f12" data-cid="'+userInfo.id+'">'+
+                                            '<span class="userName cur_user" data-nick="'+userInfo.nick+'">'+userInfo.nick+'</span>：'+
+                                            '<span class="review_cont">'+val+'</span>'+
+                                        '</div>';
+                                        replyObj.curElem.find('.reviewBoxLine').append(str);
+                                    }
+                                }
+                                if(!replyObj.curElem.find('.viewMoreBtn .icon').hasClass('up')){
+                                    replyObj.curElem.find('.hideItem').show();
+                                    replyObj.curElem.find('.viewMoreBtn .icon').addClass('up');
+                                }
+                                replyObj.curElem = null;
+                            }
+                            replyObj.curUserName = '';
+                            replyObj.cid = $('.topicDetail').attr('data-cid');
+                        }else{
+                            FP.showError(data.msg);
+                        }
+                    },function(){
+                        page.isLoading = true;
+                        FP.showError('服务繁忙，请重试')
+                    })
+                })
+            })()
+            var shareTxt = $('.postContent').text();
+            shareTxt = shareTxt.length > 36 ? (shareTxt.substring(0,35) + '...') : shareTxt;
+            FP.setWeixinShareTitle({subtitle: shareTxt,image: $('.imgList').eq(0).find('img').attr('src'),link:window.location.href});
+        </script>

@@ -1,0 +1,58 @@
+{extend name="header" /}
+{block name='title'}管理员列表页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    {load href='/js/common.js'}
+{/block}
+{block name='place1'}<a href="#">系统管理</a>{/block}
+{block name='place2'}管理员列表{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    
+    <div class="tools">
+        <ul class="toolbar">
+        <li onClick="dataadd('manager')" cdata="manager"><span><img src="/images/t01.png" /></span>添加</li>
+        <!-- <li onclick="checkall()"><span><img src="/images/t04.png" /></span>全选</li>
+        <li onclick="checkdel()"><span><img src="/images/t03.png" /></span>删除</li> -->
+        </ul>
+    </div>
+    
+    <form action="{:url('checkdel')}" method="post" id="delform">
+    <input type="hidden" name="db" value="manager" />
+    <table class="tablelist">
+        <thead>
+        <tr>
+        <!-- <th></th> -->
+        <th>编号<i class="sort"><img src="/images/px.gif" /></i></th>
+        <th>账户</th>
+        <th>权限</th>
+        <th>发布时间</th>
+        <th>上次登录时间</th>
+        <th>状态</th>
+        <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($data as $v) {?>
+        <tr>
+        <!-- <td><input name="check[]" type="checkbox" value="{$v['id']}" /></td> -->
+        <td>{$v['id']}</td>
+        <td>{$v['username']}</td>
+        <td>{$v['level']}</td>
+        <td>{$v['addtime']}</td>
+        <td>{$v['lasttime']}</td>
+        <td>{$v['state']}</td>
+        <td><a href="javascript:;" onClick="edit('manager','{$v['id']}')" class="tablelink">查看</a>     <a href="javascript:;" onClick="del('manager','{$v['id']}')" class="tablelink"> 删除</a></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    </form>
+    
+    <div class="pagin">
+        {$page}
+    </div>
+    </div>
+{/block}

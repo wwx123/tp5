@@ -1,0 +1,60 @@
+{extend name="header" /}
+{block name='title'}商务详情页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    {load href='/js/common.js'}
+{/block}
+{block name='place1'}<a href="#">会员管理</a>{/block}
+{block name='place2'}优惠券{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    
+    <div class="tools">
+        <ul class="toolbar">
+        <li onClick="location.href='couponadd.html'" cdata="manager"><span><img src="/images/t01.png" /></span>添加</li>
+        </ul>
+    </div>
+    
+    <input type="hidden" name="db" value="manager" />
+    <table class="tablelist">
+        <thead>
+        <tr>
+        <th>编号<i class="sort"><img src="/images/px.gif" /></i></th>
+        <th>名称</th>
+        <th>优惠类型</th>
+        <th>优惠力度</th>
+        <th>库存量</th>
+        <th>已发放</th>
+        <th>已使用</th>
+        <th>上次修改</th>
+        <th>结束时间</th>
+        <th>状态</th>
+        <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($data as $v) {?>
+        <tr>
+        <td>{$v['id']}</td>
+        <td>{$v['title']}</td>
+        <td>{$v['state']}</td>
+        <td>{$v['money']}</td>
+        <td>{$v['number']}</td>
+        <td>{$v['grant_num']}</td>
+        <td>{$v['use_num']}</td>
+        <td>{$v['updatetime']}</td>
+        <td>{$v['endtime']}</td>
+        <td>{$v['status']}</td>
+        <td><a href="couponedit.html?id={$v['id']}" class="tablelink">详情</a> | <a href="javascript:;" onClick="if(confirm('删除后无法恢复，确认要删除该条数据吗？')){location.href='dels.html?db=coupon&id={$v['id']}'}" class="tablelink"> 删除</a></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    
+    <div class="pagin">
+        {$page}
+    </div>
+    </div>
+{/block}

@@ -1,0 +1,36 @@
+{extend name="header" /}
+{block name='title'}更新页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    <style>
+    a{ cursor: pointer; }
+    div[name=addgoods]>span{ border: solid 1px #c5c5c5;width: 50px;height: 20px;margin:10px 0 10px 10px;padding: 5px;algin: center;line-height: 20px;float:left;overflow:hidden;cursor: pointer; }
+    </style>
+{/block}
+{block name='place1'}<a href="#">社区管理</a>{/block}
+{block name='place2'}<a href="#">话题管理</a>{/block}
+    
+{block name='content'}
+    <div class="formbody">
+        <div class="formtitle"><span>基本信息</span></div>
+        <form action="{:isset($action)?$action:'insert'}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="db" value="topic" />
+        {:isset($data)?'<input type="hidden" name="id" value="'.$data['id'].'" />':''}
+        {:isset($data)?'<input type="hidden" name="oldpic" value="'.$data['picture'].'" />':''}
+        <ul class="forminfo">
+            <li><label>话题名称</label><input name="title" maxlength="30" type="text" class="dfinput" value="{:isset($data)?$data['title']:''}" /><i>标题不能超过10个字符</i></li>
+            <li><label>图片</label><input name="file" maxlength="30" type="file" class="dfinput" value="" /><i>建议图片比例</i></li>
+            <li><label>简述</label><input name="desc" type="text" class="dfinput" value="{:isset($data)?$data['desc']:''}" /></li>
+            <li><label>排序</label><input name="sort" type="number" class="dfinput" value="{:isset($data)?$data['sort']:'0'}" /></li>
+            <li><label>状态</label><cite>
+                <select name="state" id="state" class="dfinput">
+                    <option value="0">正在讨论</option>
+                    <option value="1" {:isset($data['state'])&&$data['state']==1?'selected':''}>已过期</option>
+                </select></li>
+            <li><label>是否启用</label><cite><input name="status" type="radio" value="1" checked="checked" />是&nbsp;&nbsp;&nbsp;&nbsp;<input name="status" type="radio" value="0" />否</cite></li>
+            <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+        </ul>
+        </form>
+    </div>
+{/block}

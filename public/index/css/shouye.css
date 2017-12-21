@@ -1,0 +1,103 @@
+.navbar-scroll a{
+  font-family: 'MyNewFont';
+}
+.navbar-scroll b{
+  font-family: 'MyNewFont2';
+}
+.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("/index/images/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("/index/images/hoverstate.png") left center; }
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("/index/images/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("/index/images/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+
+@font-face {
+  font-family: 'MyNewFont';   /*字体名称*/
+  src: url('fonts/meng.ttf');       /*字体源文件*/
+}
+@font-face{
+  font-family: 'MyNewFont2';
+  src: url('fonts/YoungFolks.ttf');
+}
+
+.new_smtitle{
+  background-color: #fff;
+  text-align: center;
+  color: #000;
+  padding-top: 10px;
+}
+.new_smtitle_1{
+  font-size: 2rem;
+  letter-spacing: 10px;
+  margin-left: 10px;
+  color: #000;
+}
+.new_smtitle_2{
+  font-size: 1.1rem;
+  line-height: 70px;
+  letter-spacing: 5px;
+  color: #505050;
+}
+.new_smtitle_3{
+  font-size: .8rem;
+  letter-spacing: 5px;
+  color: #505050;
+}
+.bew_smtitle_4{
+  margin-top: -10px;
+  color: #202020;
+}
+.new_smtitle div{
+  border-bottom: 1px solid #606060;
+  width: 10%;
+  margin: 5px auto 10px auto;
+}

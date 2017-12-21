@@ -1,0 +1,67 @@
+{extend name="header" /}
+{block name='title'}商务合作页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    <script>
+    $(function(){
+        $('.click').click(function(){
+            var ct = $(this).attr('cart-data');
+            location.href = 'audit.html?sta='+ct;
+        });
+    })
+
+    </script>
+{/block}
+{block name='place1'}<a href="#">消息管理</a>{/block}
+{block name='place2'}商务合作{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    
+    <div class="tools">
+    
+        <ul class="toolbar">
+        <li class="click" cart-data="1"><span><img src="/images/t04.png" /></span>未查看</li>
+        <li class="click" cart-data="2"><span><img src="/images/t04.png" /></span>已查看</li>
+        <li class="click" cart-data="3"><span><img src="/images/t04.png" /></span>已处理</li>
+        </ul>
+        
+    </div>
+    
+    <table class="tablelist">
+        <thead>
+        <tr>
+        <th>编号</th>
+        <th>联系人</th>
+        <th>联系电话</th>
+        <th width="200px">留言</th>
+        <th>添加时间</th>
+        <th>状态</th>
+        <th width="150px">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($data as $v){ ?>
+        <tr>
+        <td>{$v['id']}</td>
+        <td>{$v['consignee']}</td>
+        <td>{$v['tel']}</td>
+        <td>{$v['desc']}</td>
+        <td>{$v['addtime']}</td>
+        <td>{$v['status']}</td>
+        <td><a href="auditedit.html?id={$v['id']}" class="tablelink"> 查看</a> | <a onClick="if(confirm('确认要删除该条数据吗？')){location.href='del.html?db=audit&id={$v['id']}'}" class="tablelink"> 删除</a></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <div class="pagin">
+        {$page}
+    </div>
+{/block}
+
+{block name='js'}
+<script type="text/javascript">
+$('.tablelist tbody tr:odd').addClass('odd');
+</script>
+{/block}

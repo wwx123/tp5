@@ -1,0 +1,33 @@
+{extend name="header" /}
+{block name='title'}分类详情页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+{/block}
+{block name='place1'}<a href="#">文章管理</a>{/block}
+{block name='place2'}分类添加{/block}
+    
+{block name='content'}
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+    <form action="insert" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="db" value="news_type">
+    <ul class="forminfo">
+        <li><label>分类名称</label><input name="typename" type="text" class="dfinput" maxlength="30" value="" /><i>标题不能超过30个字符</i></li>
+        <li><label>图片</label><input name="file" type="file" class="dfinput" /><i>建议图片比例</i></li>
+        <li><label>分类所属</label>
+            <select name="parth" id="" class="dfinput">
+                <option value="0">顶级</option>
+                <?php
+                foreach($parth as $v){
+                    echo '<option value="'.$v['id'].'">'.$v['typename'].'</option>';
+                }
+                ?>
+            </select><i>分类所属选择之后不可更改，请慎重选择</i>
+        </li>
+        <li><label>排序</label><input name="sort" type="number" class="dfinput" value="0"/></li>
+        <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+    </ul>
+    </form>
+    </div>
+{/block}

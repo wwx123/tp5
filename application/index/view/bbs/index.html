@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- Mobile Devices Support @begin -->
+		<meta name="referrer" content="always">
+		<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+		<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+		<meta content="no-cache" http-equiv="pragma">
+		<meta content="0" http-equiv="expires">
+		<meta name="referrer" content="always">
+		<meta content="telephone=no, address=no" name="format-detection">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<title>花加社区</title>
+		<link rel="stylesheet" type="text/css" href="/bbs/css/base.css?_t=20171031">
+        <script src="/js/jquery.min.js"></script>
+		<script>
+		    var g_rem = 20;
+		    (function (doc, win) {
+		        var docEl = doc.documentElement,
+		            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		            recalc = function () {
+		                var clientWidth = docEl.clientWidth;
+		                if (!clientWidth){
+		                    clientWidth = 375;
+		                }
+		                clientWidth = clientWidth > 640 ? 640 : clientWidth;
+		                g_rem = 20 * (clientWidth / 375);
+		                docEl.style.fontSize =  g_rem + 'px';
+		            };
+
+		        if (!doc.addEventListener) return;
+		        win.addEventListener(resizeEvt, recalc, false);
+		        doc.addEventListener('DOMContentLoaded', recalc, false);
+		    })(document, window);
+		    // var _web_base="http://t.flowerplus.cn/".replace(/^https?:/,window.location.protocol);
+		    // document.domain="flowerplus.cn";
+		</script>
+       	<link rel="stylesheet" type="text/css" href="/bbs/css/index.css?_t=20171101">
+    </head>
+    <body>
+        <div class="topFixed">
+            <div class="topSearch">
+                <div class="postingIcon icon" onClick="location.href='posting.html'"></div>
+                <div class="serachInputBox boxsizing rlt inline"><input type="text" class="serachInput" placeholder="输入搜索内容"></div>
+                <div class="messageIcon icon" onClick="location.href='myinfo.html'"></div>
+            </div>
+            <div class="topTabMenu1 bgWhite tc flex borderBottom">
+                <div id="menu_news" class="menu rlt checked" type="1">
+                    <div class="title">最新</div>
+                    <p class="f10 color_9b">New</p>
+                </div>
+                <div id="menu_focus" class="menu rlt" type="2">
+                    <div class="title">关注</div>
+                    <p class="f10 color_9b">Following</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="topicBlock bgf5 pad16">
+                <div class="topic_titleROw flex">
+                    <div class="">话题</div>
+                    <div><a href="topiclist.html" class="color_9b">查看更多</a></div>
+                </div>
+                <div style="height: 5.9rem; overflow: hidden;">
+                <div class="scrollWrapBox">
+                    <div class="scrollContent">
+                    <?php foreach ($topic as $tv) { ?>
+                        <a href="topic_detail.html?id={$tv['id']}" class="inline">
+                        <div class="newTopic boxsizing">
+                            <div class="likeList nowrap">
+                            <?php foreach ($tv['users'] as $tuv) { ?>
+                                <div class="headImg inline"><img src="{$tuv['picture']}"></div>
+                            <?php } ?>
+                                <div class="ellipse inline">...</div>
+                            </div>
+                            <div class="attentionRow mainColor"><span class="attentionNum">{$tv['attention']}</span>人关注</div>
+                            <div class="topicName">{$tv['title']}</div>
+                        </div>
+                        </a>
+                    <?php } ?>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </a>
+            <div class="newTopicCont">
+            <?php foreach ($review as $rv) { ?>
+                <div class="bgWhite topicList">
+                    <div class="authorRow clearfix">
+                        <div class="headImg fl"><img src="{$rv['usersid']['picture']?$rv['usersid']['picture']:'/bbs/images/logo.png'}"></div>
+                        <div class="authorInfo">
+                            <div class="author">{$rv['usersid']['username']?$rv['usersid']['username']:'花加'}</div>
+                            <div class="publishTime f10 color_9b">{$rv['addtime']}</div>
+                        </div>
+                    </div>
+                    <a href="detail.html?id={$rv['id']}">
+                    <div class="toppicCont">{$rv['descri']}</div>
+                    </a>
+                    <div class="toppicPic flex">
+                        <div class="inline imgList">
+                            {$rv['picture']}
+                        </div>
+                    </div>
+                    <div class="corp_row flex">
+                        <a href="detail.html?id={$rv['id']}">
+                        <div class="btn commitBtn">
+                            <span class="icon icon_commit"></span>
+                            <span class="num inline">{$rv['ans']==0?'评论':$rv['ans']}</span>
+                        </div>
+                        </a>
+                        <div class="btn supportBtn">
+                            <span class="icon icon_support"></span>
+                            <span class="num inline">{$rv['likes']}</span>
+                        </div>
+                    </div>
+                </div>
+
+            <?php } ?>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    var page = 1;
+    $('#menu_news').click(function(){
+        location.href = 'index.html';
+    })
+    $('#menu_focus').click(function(){
+        location.href = 'focus.html';
+    })
+    $(window).scroll(function(){
+    　　var scrollTop = $(this).scrollTop();
+    　　var scrollHeight = $(document).height();
+    　　var windowHeight = $(this).height();
+        var sera = $('.serachInput').val();
+    　　if(scrollTop + windowHeight == scrollHeight){
+            searchProductClassbyName(page,sera);
+    　　}
+    });
+
+    $('.serachInput').bind('input propertychange', function() {
+        var serach = $(this).val();
+        searchProductClassbyName(0,serach);
+    });
+
+    function searchProductClassbyName(page,serach){
+        $.post('reviewdata',{page:page,sera:serach},function(res){
+            console.log(res);
+            if (page == 0) {
+                $('.newTopicCont').html(res);
+                window.page=1;
+            } else {
+                if (res != '') {
+                    $('.newTopicCont').append(res);
+                    window.page=page+1;
+                }            
+            }
+        })
+    }
+</script>

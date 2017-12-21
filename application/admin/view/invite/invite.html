@@ -1,0 +1,45 @@
+{extend name="header" /}
+{block name='title'}邀请列表页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    {load href='/js/common.js'}
+{/block}
+{block name='place1'}<a href="#">用户管理</a>{/block}
+{block name='place2'}邀请列表{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    
+    <div class="tools" style="height: 8px;">
+    </div>
+
+    <table class="tablelist">
+        <thead>
+        <tr>
+        <th>编号<i class="sort"><img src="/images/px.gif" /></i></th>
+        <th>注册人</th>
+        <th>邀请人</th>
+        <th>发布时间</th>
+        <th>返利类型</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($data as $v) {?>
+        <tr>
+        <td>{$v['id']}</td>
+        <td>{$v['iusername']}（ID：{$v['inviteuser']}）</td>
+        <td>{$v['username']}（ID：{$v['usersid']}）</td>
+        <td>{:$v['addtime']==0?'--:--':date('Y-m-d h:i',$v['addtime'])}</td>
+        <td>{$v['style']}</td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    
+    <div class="pagin">
+        {$page}
+    </div>
+    </div>
+
+{/block}

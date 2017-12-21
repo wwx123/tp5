@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="keywords" content="JRclassroom">
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <title>JRclassroom--购买</title>
+        <link rel="stylesheet" href="./css/order/m_new.css">
+        <link rel="stylesheet" href="./css/order/m.css">
+        <script charset="utf-8" src="./js/order/v.js"></script>
+        <script src="./js/order/hm.js"></script>
+        <script async="" src="./js/order/sensorsdata.min.js"></script>
+        <script>
+            var _web_base="./".replace(/^https?:/,window.location.protocol);
+            document.domain="flowerplus.cn";
+        </script>
+        <link rel="stylesheet" type="text/css" href="./css/order/reset.css">
+        <link rel="stylesheet" type="text/css" href="./css/order/global.css">
+        <link rel="stylesheet" href="./css/order/weui.css">
+        <link rel="stylesheet" href="./css/order/jquery-weui.css">
+        <script src="./js/order/jquery-2.1.4.js"></script>
+        <script src="./js/order/jquery-weui.js"></script>
+        <script src="./js/order/jweixin-1.2.0.js"></script>
+        <script src="./js/order/m.js"></script>
+
+<style>
+.down{transform: rotate(135deg);}
+.addbuy_product li{float:left;}
+.addbuy_product img{margin-right: 5px;margin-bottom: 5px;}
+.inp {
+    width:100%;
+    border:1px solid #ddd;
+    border-radius:3px;
+    padding:10px 10px;
+    -webkit-appearance:none;
+    -webkit-tap-highlight-color:transparent;
+    outline:none;
+    font-size:14px;
+    line-height:16px
+    -webkit-transition:.3s ease-out;
+    transition:.3s ease-out;
+}
+.inp:focus {
+    border-color:#f73f65;
+}
+.inp:disabled {
+    border-color:#f0f0f0;
+    background:#f0f0f0;
+}
+.bt-length{text-overflow:ellipsis;overflow:hidden;}
+.orin {
+    width: 100%;
+    padding-left: 20px;
+    height: 30px;
+    line-height: 30px;
+}
+.orinp{
+    /*border: 1px #EEEEEE solid;*/
+    border-radius:5px;
+    width: 77%;
+    background: #fff;
+    padding-left: 10px;
+
+}
+</style>
+<link rel="stylesheet" type="text/css" href="./css/order/zfk.css">
+<link rel="stylesheet" type="text/css" href="./css/order/buy.css">
+<link rel="stylesheet" type="text/css" href="./css/order/place.css">
+<link rel="stylesheet" type="text/css" href="./css/order/coupon.css">
+
+    <style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("./images/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("./images/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("./images/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("./images/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style></head>
+<body ontouchstart="">
+<div class="page">
+<div id="buyWrap">
+<div class="module-wrap" data-module="buy" style="padding: 5px; display: none;">
+  <div class="delivery_wrap_title">
+      <p class="borderBottom">配送地址</p>
+  </div>
+  <a href="#place" class="delivery_wrap">
+      <div class="delivery_wrap_con">
+          <!-- <img src="./images/order/place.png" height="200" width="200" alt="" class="delivery_icon"> -->
+          <div class="delivery_empty" style="">请填写您的收货地址</div>
+          <div class="select_address">
+              <!-- <p>蒯美政&nbsp;&nbsp;134****2923</p>
+              <p class="f12 cgry">上海市普陀区长寿路822弄222号11房间</p>
+              <p style="" class="brand_color f12 delivery_tip">(收货不便时，可选择免费代收服务)</p> -->
+          </div>
+      </div>        
+  </a>
+  <div class="service_time">
+          
+  </div>
+  <div class="pro_inform">
+    <dl class="pro_inform_t">
+        <dt class="borderBottom">商品套餐</dt>
+        <!-- 购买多种商品 -->
+        <a href="javascript:;">
+            <dd class="pro_inform_b borderBottom">
+                <div class="sigle_pro" style="padding-right:60px">
+                    <p><img src="./images/order/15060510885727.jpg" alt=""></p>
+                        <div>
+                            <p>石头花瓶—Stone</p>
+                            <p class="pro_date">石头花瓶</p>
+                        </div>
+                    <p class="money">¥229</p>
+                </div>
+            </dd>
+        </a>
+        <div class="default_choose switch_one" style="display: none;">
+            <li>养护必备-保鲜液(4包)</li>
+            <li>
+                <input class="switch bxy_switch bxy_one" id="default_choose_switch" type="checkbox">
+            </li>
+            <span class="bxy_money">¥1</span>
+        </div>
+        <div class="default_choose switch_two" style="display: none;">
+            <li>养护必备-保鲜液(12包)</li>
+            <li>
+                <input class="switch bxy_switch bxy_two" id="default_choose_switch" type="checkbox" checked="checked">
+            </li>
+            <span class="bxy_money">¥1</span>
+        </div>
+    </dl>
+  </div>
+  <div class="price">
+      <dl>
+          <dt>商品总额：</dt>
+          <dd id="totalfee">￥229</dd>
+      </dl>
+      <dl>
+          <dt>运费：</dt>
+          <dd id="postfee">￥0</dd>
+      </dl>
+      <dl>
+          <dt>优惠/抵扣：</dt>
+          <dd id="discountfee">￥50</dd>
+      </dl>
+  </div>
+<!-- 提交订单 -->
+<div class="submit borderTop">
+    <p>总计:<span class="brand_color" id="payment">￥179</span></p>
+    <a href="javascript:;" class="pay_submit" id="payandsubmit">提交订单</a>
+</div>
+<div class="fixmask">JRclassroom</div>
+</div>
+</div>
+<div class="module-wrap" data-module="place" style="display: none;">
+<div class="place_out">
+    		<div class="place_no" style="">
+    			<p><img src="./images/order/no_place.png"></p>
+    			<p>你还没有添加收货地址哦</p>
+    		</div>
+    		<!-- 有地址 -->
+    		<div class="place" style="display: none;">
+    			<div class="place_in borderBottom place_index">
+    			</div>
+    		</div>
+    		<a href="#add_address" class="place_add">
+    			<span></span>
+    			添加新地址
+    		</a>
+    	</div>	
+    	<script type="text/html" id="address_tpl">
+    		<label class="borderBottom flex" address-id="{id}">
+			 	<p>
+			 		<input type="radio" value="" name="coupon" {checked} >
+				</p>
+				<div class="place_con" onclick="up_address(this)">
+					<p>{receiver_name} <span>{receiver_mobile}</span><span class="s_bj {c}">{receiver_type}</span></p>
+					<p class="f12 cgry">{receiver_state}{receiver_city}{receiver_district}{receiver_address}</p>
+				</div>
+				<p>
+					<a href="#edit_address" onclick="edit(this)" class="place_edit"></a>
+				</p>
+			</label>
+		</script>
+    	<script type="text/javascript">
+    		function up_address(file){
+			   var its = $(file).parent();
+		        selectAddress(its.attr('address-id'));
+		        window.location.href='#';
+			}
+    	</script>
+</div>
+<script type="text/javascript">
+    var $moduleName = "";
+    function onHashChange(){
+     var moduleName = window.location.hash.substring(1);
+     if(moduleName == "" || $(".module-wrap[data-module='"+moduleName+"']").length != 1){
+      moduleName = 'buy';
+     }
+     if(moduleName == $moduleName){
+      return;
+     }
+     $moduleName = moduleName;
+      var module = $(".module-wrap[data-module='"+$moduleName+"']");
+     $(".module-wrap").hide();
+     module.show();
+    }
+    window.addEventListener("hashchange",onHashChange);
+onHashChange();
+</script>
+</body></html>

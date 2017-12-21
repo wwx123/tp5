@@ -1,0 +1,46 @@
+{extend name="header" /}
+{block name='title'}管理员列表页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    {load href='/js/common.js'}
+{/block}
+{block name='place1'}<a href="#">课程管理</a>{/block}
+{block name='place2'}课程分类{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    
+    <div class="tools" style="height: 10px;">
+    </div>
+    
+    <form action="{:url('checkdel')}" method="post" id="delform">
+    <input type="hidden" name="db" value="manager" />
+    <table class="tablelist">
+        <thead>
+        <tr>
+        <th>编号</th>
+        <th>分类名称</th>
+        <th>添加时间</th>
+        <th>排序</th>
+        <th>收费</th>
+        <th>状态</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($data as $v) {?>
+        <tr>
+        <td>{$v['id']}</td>
+        <td>{$v['typename']}</td>
+        <td>{:$v['addtime']>0?date('Y-m-d',$v['addtime']):'--:--'}</td>
+        <td>{$v['sort']}</td>
+        <td>{$v['state']==0?'分享免费':'付费'}</td>
+        <td>{$v['status']==1?'正常':'禁用'}</td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    </form>
+    
+    </div>
+{/block}

@@ -1,0 +1,28 @@
+{extend name="header" /}
+{block name='title'}管理员添加页{/block}
+{block name='css'}
+    {load href='/css/style.css' /}
+{/block}
+{block name='place1'}<a href="#">系统管理</a>{/block}
+{block name='place2'}<a href="#">管理员添加</a>{/block}
+    
+{block name='content'}
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+    
+    <form action="{:url('insert')}" method="post">
+    <input type="hidden" name="db" value="manager" />
+    <ul class="forminfo">
+    <li><label>账户</label><input name="username" type="text" maxlength="30" class="dfinput" required /><i>账户不能超过30个字符</i></li>
+    <li><label>密码</label><input name="password" type="password" class="dfinput" required /></li>
+    <li><label>确认密码</label><input name="newpass" type="password" class="dfinput" required /></li>
+    <li><label>等级权限</label><select name="level" class="dfinput"><option value="1">普通管理员</option></select></li>
+    <li><label>状态</label><select name="state" class="dfinput"><option value="0">正常</option><option value="1">禁用</option></select></li>
+    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+    </ul>
+    </form>
+    
+    </div>
+{/block}
+

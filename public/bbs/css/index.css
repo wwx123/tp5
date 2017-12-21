@@ -1,0 +1,201 @@
+.topFixed{
+    /*position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    z-index:10;*/
+}
+.topSearch{
+    padding: 0.6rem 0.5rem 0.6rem 1rem;
+    background: #fff;
+}
+.postingIcon{
+    width: 1.52rem;
+    height: 1.3rem;
+    background-position: -3.08rem 0;
+    margin-right: 0.9rem;
+}
+.serachInputBox{
+    width: 11.25rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    background-color: #F0F0F0;
+    border-radius: 2.9rem;
+    padding: 0 0.25rem 0 2.1rem;
+    margin-right: 0.9rem;
+}
+.serachInputBox:after{
+    content: '';
+    position: absolute;
+    width: 0.75rem;
+    height: 0.75rem;
+    background: url('../images/icon.png') -12.8rem 0 no-repeat;
+    background-size: 13.55rem 1.35rem;
+    left: 1.1rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.serachInput{
+    width: 90%;
+}
+.messageIcon{
+    width: 1.5rem;
+    height: 1.45rem;
+    background: url('../images/my.png') center no-repeat;
+    background-size: 1.5rem 1.45rem;
+    padding: 0.3rem;
+}
+.topTabMenu1{
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+.topTabMenu1 .menu{
+    width: 4.5rem;
+    padding-bottom: 0.5rem;
+}
+.topTabMenu1 .menu p{
+    line-height: 0.6rem;
+}
+.topTabMenu1 .menu.checked .title{
+    font-weight: 600;
+}
+.topTabMenu1 .menu.checked:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 0.15rem;
+    background: #1a1a1a;
+    width: 3rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.toppicPic{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.topic_titleROw{
+    padding: 0.6rem 0 0.92rem;
+}
+.scrollWrapBox{
+    height: 6.2rem;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+.scrollContent{
+    height:8rem;
+    white-space: nowrap;
+    width:auto;
+}
+.newTopic{
+    display: inline-block;
+    vertical-align: top;
+    width: 7.6rem;
+    height: 5.2rem;
+    border-radius: 0.3rem;
+    margin-right: 0.3rem;
+    background: #fff;
+    padding: 0.8rem 0.6rem 0.5rem;
+}
+.headImg{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 100%;
+    background: #e8e8e8;
+    overflow: hidden;
+}
+.likeList .ellipse{
+    height: 1.2rem;
+    color:#1A1A1A;
+}
+.attentionRow{
+    font-size: 0.6rem;
+    padding: 0.2rem 0 0.5rem;
+}
+.topicName{
+    color: #4a4a4a;
+}
+.topicList{
+    padding: 1rem 0.8rem 0.6rem;
+    margin-bottom: 0.5rem;
+}
+.authorRow .headImg{
+    width: 1.7rem;
+    height: 1.7rem;
+}
+.authorInfo{
+    padding-left: 2.1rem;
+}
+.toppicCont{
+    line-height: 1.1rem;
+    margin: 0.8rem 0;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 2; 
+    max-height: 2.2rem;
+    overflow: hidden;
+}
+.supportBtn{
+    right: 1rem;
+    top: 2rem;
+}
+.corp_row{
+    justify-content: flex-end;
+}
+.corp_row .btn{
+    padding: 0.45rem 1rem 0;
+    color:#b2b2b2;
+}
+.corp_row .btn .icon{
+    width: 0.95rem;
+    height: 0.95rem;
+    margin-right: 0.15rem;
+}
+.icon_transmit{
+    background-position: -10.7rem 0;
+}
+.icon_commit{
+    background-position: -5.9rem 0;
+}
+.icon_support{
+    background-position: -8.73rem 0;
+}
+.supportBtn.checked{
+    color: #F5A623;
+}
+.supportBtn.checked .icon_support{
+    background-position: -9.7rem 0;
+}
+.noTips{
+    padding-top: 1.5rem;
+}
+.noTips img{
+    display: block;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 35% auto 0.8rem;
+}
+.right_flag{
+    height: 1.05rem;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.essence{
+    background: url('../images/essence.png') center no-repeat;
+    background-size: cover;
+    width: 2.3rem;
+    height: 1.05rem;
+}
+.topper{
+    background: url('../images/recomm.png') center no-repeat;
+    background-size: cover;
+    width: 2.3rem;
+    height: 1.05rem;
+    margin-left: 0.2rem;
+}

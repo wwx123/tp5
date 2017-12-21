@@ -1,0 +1,71 @@
+{extend name="header" /}
+{block name='title'}轮播{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    {load href='/js/common/news.js'}
+<style>
+a{ cursor: pointer; }
+</style>
+{/block}
+{block name='place1'}<a href="#">网站管理</a>{/block}
+{block name='place2'}展示列表{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    <div class="tools">
+        <ul class="toolbar">
+        <li class='insert' d-data='index_list'><span><img src="/images/t01.png" /></span>添加</li>
+        </ul>
+    </div>
+    <table class="tablelist desct" d-data="index_list" >
+    <thead>
+    <tr>
+    <th>编号</th>
+    <th>名称</th>
+    <th>展示类型</th>
+    <th>链接地址</th>
+    <th>发布时间</th>
+    <th>排序</th>
+    <th>状态</th>
+    <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($data as $v) {?>
+    <tr>
+    <td>{$v['id']}</td>
+    <td><a href="#">{$v['title']}</a></td>
+    <td>{$v['state']}</td>
+    <td>{$v['url']}</td>
+    <td>{$v['addtime']}</td>
+    <td>{$v['sort']}</td>
+    <td>{$v['status']}</td>
+    <td><a class="desc" d-data="index_list" cart-data="{$v['id']}">详情</a> | <a href="javascript:;" class="delete" cart-data="{$v['id']}">删除</a></td>
+    </tr>
+    <?php } ?>
+    </tbody>
+    
+    </table>
+
+    </div>
+{/block}
+
+{block name='js'}
+<script>
+statearr = ['上架','已下架'];
+statearr2 = ['下架','上架'];
+$(".upState").click(function(){
+    cid = $(this).attr('cid');
+    state = $(this).attr('sdata');
+    db = 'goods';
+    $.post("{:url('upState')}",{db:db,id:cid,state:state},function(res){
+        if (res!=-1) {
+            $("a[cid="+cid+"]").html(statearr2[res]);
+            $("a[cid="+cid+"]").attr('sdata',res);
+            $('#s'+cid).html(statearr[res]);
+        }
+    });
+})
+</script>
+{/block}

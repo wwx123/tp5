@@ -1,0 +1,104 @@
+{extend name="header" /}
+{block name='title'}更新页{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    <style>
+    a{ cursor: pointer; }
+    div[name=addgoods]>span{ border: solid 1px #c5c5c5;width: 50px;height: 20px;margin:10px 0 10px 10px;padding: 5px;algin: center;line-height: 20px;float:left;overflow:hidden;cursor: pointer; }
+    </style>
+{/block}
+{block name='place1'}<a href="#">网站管理</a>{/block}
+    
+{block name='content'}
+    <div class="formbody">
+        <div class="formtitle"><span>基本信息</span></div>
+        <form action="{:isset($action)?$action:'insert'}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="db" value="index_list" />
+        {:isset($data)?'<input type="hidden" name="id" value="'.$data['id'].'" />':''}
+        {:isset($data)?'<input type="hidden" name="oldpic" value="'.$data['picture'].'" />':''}
+        <ul class="forminfo">
+            <li><label>标题</label><input name="title" maxlength="30" type="text" class="dfinput" value="{:isset($data)?$data['title']:''}" /><i>标题不能超过10个字符</i></li>
+            <li><label>简述</label><input name="desc" type="text" class="dfinput" value="{:isset($data)?$data['desc']:''}" /></li>
+            <li><label>内容分类</label>
+                <select name="state" id="state" class="dfinput">
+                    <option value="0">图片</option>
+                    <option value="1" {:isset($data['state'])&&$data['state']==1?'selected':''}>商品</option>
+                </select>
+            </li>
+            <li><div style="border-top: solid 1px #c5c5c5;margin-bottom: 15px;"></div></li>
+            <li class="con1"><label>链接地址</label>
+                <select name="url" id="selecturl" class="dfinput">
+                    <option value="0">其它</option>
+                    <?php foreach($type as $tv) {?>
+                        <option value="#news{$tv['id']}">{$tv['typename']}</option>
+                    <?php } ?>
+                    </volist>
+                </select>
+            </li>
+            <li class="con1" id="inputurl"><label>链接地址</label><input name="url" type="text" class="dfinput" value="{:isset($data)?$data['url']:''}" /><i>链接地址请输入完整路径，如：https://www.baidu.com</i></li>
+            <li class="con1">
+                <label>图片</label>
+                <input name="file" type="file" class="dfinput" /><i>建议大小</i>
+            </li>
+            <li class="con1" id="inputurl"><label>价格</label><input name="price" type="number" class="dfinput" value="{:isset($data)?$data['price']:''}" /><i>无则不填</i></li>
+            <li class="con2">
+                <label>显示商品</label>
+                <select name="" id="goods" class="dfinput">
+                <?php foreach($goods as $gv) {?>
+                    <option value="{$gv['id']}">{$gv['goods']}</option>
+                <?php } ?>
+                </select>
+                <i><a id="addgoods">添加</a>&nbsp;&nbsp;&nbsp;（单击商品删除。若要修改，则需重新选择展示商品）</i><br>
+                <div style="align: center" name="addgoods">
+                    
+                </div>
+            </li>
+            <li><div style="border-top: solid 1px #c5c5c5;margin-bottom: 15px;"></div></li>
+            <li><label>排序</label><input name="sort" type="number" class="dfinput" value="{:isset($data)?$data['sort']:'0'}" /></li>
+            <li><label>是否启用</label><cite><input name="status" type="radio" value="1" checked="checked" />是&nbsp;&nbsp;&nbsp;&nbsp;<input name="status" type="radio" value="0" />否</cite></li>
+            <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+        </ul>
+        </form>
+    </div>
+{/block}
+
+{block name="js"}
+<script>
+var n = {:isset($data)&&$data['state']==1?'1':'0'};
+if (n == 1) {
+    $('.con2').css('display','block');
+    $('.con1').css('display','none');
+} else {
+    $('.con1').css('display','block');
+    $('.con2').css('display','none');
+}
+$('#selecturl').change(function(){
+    if ($('#selecturl').val()==0) {
+        var str = '<label>链接地址</label><input name="url" type="text" class="dfinput" value="{:isset($data)?$data['url']:''}" /><i>链接地址请输入完整路径，如：https://www.baidu.com</i>';
+        $('#inputurl').html(str);
+    } else {
+        $('#inputurl').html('');
+    }
+})
+$('#state').change(function(){
+    var val = $(this).val();
+    if (val == 1) {
+        $('.con2').css('display','block');
+        $('.con1').css('display','none');
+    } else {
+        $('.con1').css('display','block');
+        $('.con2').css('display','none');
+    }
+})
+$('#addgoods').click(function(){
+    var id = $('#goods').val();
+    var name = $('#goods option[value='+id+']').html();
+    $('div[name=addgoods]').append('<span onClick="delgoods('+id+')" c-data="'+id+'">'+name+'<input type="hidden" name="goodsid[]" value="'+id+'"/></span>');
+})
+
+function delgoods (id) {
+    $('span[c-data='+id+']').remove();
+}
+</script>
+{/block}

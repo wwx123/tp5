@@ -1,0 +1,59 @@
+{extend name="header" /}
+{block name='title'}话题{/block}
+{block name='css'}
+    {load href='/css/style.css'}
+    {load href='/js/jquery.js'}
+    {load href='/js/common/news.js'}
+{/block}
+{block name='place1'}<a href="#">社区管理</a>{/block}
+{block name='place2'}话题列表{/block}
+    
+{block name='content'}
+    <div class="rightinfo">
+    <div class="tools">
+        <ul class="toolbar">
+        <li class='insert' d-data='review'><span><img src="/images/t01.png" /></span>添加</li>
+        </ul>
+    </div>
+    <table class="tablelist desct" d-data="classes" >
+    <thead>
+    <tr>
+    <th>编号</th>
+    <th>评论人</th>
+    <th>评论内容</th>
+    <th>评论时间</th>
+    <th>点赞数</th>
+    <th>回复数</th>
+    <th>评论类型</th>
+    <th>状态</th>
+    <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($data as $v) {?>
+    <tr>
+    <td>{$v['id']}</td>
+    <td><a href="#">{$v['username']}</a></td>
+    <td width="200px">{$v['descri']}</td>
+    <td>{$v['addtime']}</td>
+    <td>{$v['likes']}</td>
+    <td>{$v['ans']}</td>
+    <td>{$v['type']}</td>
+    <td>{$v['state2']}</td>
+    <td><a href="reviewedit.html?id={$v['id']}">详情</a> | <a onClick="if(confirm('删除该数据后会删除该课程下所有的目录，且无法彻底恢复，确认要删除吗？')){location.href='reviewdel.html?id={$v['id']}'}">删除</a>
+    <?php if ($v['state']==0) {?>
+        | <a href="reviewup.html?id={$v['id']}&&sta=1">发表</a> | <a href="reviewup.html?id={$v['id']}&&sta=-1">不通过</a>
+        <?php } ?>
+    </td>
+    </tr>
+    <?php } ?>
+    </tbody>
+    
+    </table>
+
+    <div class="pagin">
+        {$page}
+    </div>
+    
+    </div>
+{/block}
